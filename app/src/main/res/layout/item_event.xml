@@ -11,18 +11,17 @@
         android:padding="15dp"
         android:orientation="vertical">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_training" />
+
         <TextView
             android:id="@+id/title"
             style="@style/TitleTextStyleBlack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="День здоровья" />
-
-        <TextView
-            android:id="@+id/scores"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="Баллы: 100" />
 
         <TextView
             android:id="@+id/date"
@@ -34,6 +33,7 @@
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/NormalTextStyleBlack"
             tools:text="Описание" />
 
         <Button

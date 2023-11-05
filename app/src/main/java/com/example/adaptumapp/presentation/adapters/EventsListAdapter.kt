@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.example.adaptumapp.R
 import com.example.adaptumapp.presentation.model.EventListItem
+import com.example.adaptumapp.presentation.viewHolders.EventViewHolder
 
 class EventsListAdapter : ListAdapter<EventListItem, EventViewHolder>(EventItemDiffCallback())  {
 

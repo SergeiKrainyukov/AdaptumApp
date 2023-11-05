@@ -5,10 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import com.example.adaptumapp.AdaptumApp
 import com.example.adaptumapp.databinding.FragmentEventsBinding
 import com.example.adaptumapp.presentation.adapters.EventsListAdapter
 import com.example.adaptumapp.presentation.viewModels.EventsFragmentViewModel
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class EventsFragment : Fragment() {
@@ -50,12 +56,19 @@ class EventsFragment : Fragment() {
         eventsAdapter.registerAction = {
             viewModel.onClickRegister(it)
         }
-        with(binding.eventsRv) {
-            adapter = eventsAdapter
-        }
+        binding.eventsRv.adapter = eventsAdapter
+
     }
 
     private fun bindViewModel() {
-
+        lifecycleScope.launch {
+            viewModel.eventsState.flowWithLifecycle(
+                lifecycle,
+                Lifecycle.State.RESUMED
+            ).filterNotNull()
+                .collectLatest {
+                    eventsAdapter.submitList(it)
+                }
+        }
     }
 }
