@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.adaptumapp.AdaptumApp
 import com.example.adaptumapp.databinding.FragmentTasksBinding
 import com.example.adaptumapp.presentation.adapters.TasksListAdapter
+import com.example.adaptumapp.presentation.common.Navigator
 import com.example.adaptumapp.presentation.viewModels.TasksFragmentViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.filterNotNull
@@ -67,6 +68,9 @@ class TasksFragment : Fragment() {
         tasksListAdapter = TasksListAdapter()
         with(binding.tasksRv) {
             adapter = tasksListAdapter
+        }
+        tasksListAdapter.onClickTask = {
+            Navigator.navigateReplaceSaveStack(TaskFragment(), parentFragmentManager)
         }
     }
 }

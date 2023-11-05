@@ -17,20 +17,20 @@ class TasksFragmentViewModel @Inject constructor() : ViewModel() {
 
     fun init() {
         viewModelScope.launch {
-        val list = listOf(
-            TaskListItem(
-                0,
-                type = "Бег",
-                date = "10.10.2023",
-                status = "К выполнению"
-            ),
-            TaskListItem(
-                1,
-                type = "Ходьба",
-                date = "11.11.2023",
-                status = "К выполнению"
-            ),
-        )
+            val list = listOf(
+                TaskListItem(
+                    0,
+                    type = "Бег",
+                    date = "10.10.2023",
+                    status = "К выполнению"
+                ),
+                TaskListItem(
+                    1,
+                    type = "Ходьба",
+                    date = "11.11.2023",
+                    status = "К выполнению"
+                ),
+            )
             _tasksState.emit(list)
         }
     }

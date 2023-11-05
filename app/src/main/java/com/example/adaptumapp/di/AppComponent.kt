@@ -1,6 +1,7 @@
 package com.example.adaptumapp.di
 
 import com.example.adaptumapp.di.modules.AppModule
+import com.example.adaptumapp.di.modules.HandlersModule
 import com.example.adaptumapp.presentation.MainActivity
 import com.example.adaptumapp.presentation.fragments.EventsFragment
 import com.example.adaptumapp.presentation.fragments.ProfileFragment
@@ -13,6 +14,7 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AppModule::class,
+        HandlersModule::class
     ]
 )
 interface AppComponent {
