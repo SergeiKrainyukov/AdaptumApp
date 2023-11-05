@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.adaptumapp.R
 import com.example.adaptumapp.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
@@ -18,5 +19,11 @@ class ProfileFragment : Fragment() {
     ): View {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.profileAdditionalInfoOrganizationLayout.icon.setImageResource(R.drawable.ic_logout)
+
     }
 }

@@ -9,20 +9,19 @@
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/white"
+        android:padding="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/avatar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:layout_marginStart="16dp"
-            android:paddingBottom="20dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/avatars" />
@@ -30,35 +29,68 @@
         <TextView
             android:id="@+id/textView"
             style="@style/TitleTextStyleBlack"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:text="Elizaveta Petrova"
             app:layout_constraintStart_toEndOf="@+id/avatar"
-            app:layout_constraintTop_toTopOf="@+id/avatar" />
+            app:layout_constraintTop_toTopOf="@+id/avatar"
+            tools:text="Elizaveta Petrova" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:text="bestadmin"
             app:layout_constraintStart_toEndOf="@+id/avatar"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:text="bestadmin" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            app:icon="@drawable/ic_logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Выйти"
+            android:text="@string/logout"
+            app:icon="@drawable/ic_logout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView"
             app:layout_constraintTop_toTopOf="@+id/avatar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <include
+        android:id="@+id/profile_additional_info_job_layout"
+        layout="@layout/profile_additional_info_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
+    <include
+        android:id="@+id/profile_additional_info_organization_layout"
+        layout="@layout/profile_additional_info_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/profile_additional_info_job_layout" />
+
+    <include
+        android:id="@+id/profile_additional_info_mail_layout"
+        layout="@layout/profile_additional_info_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/profile_additional_info_organization_layout" />
+
+    <include
+        android:id="@+id/profile_additional_info_city_layout"
+        layout="@layout/profile_additional_info_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/profile_additional_info_mail_layout" />
+
+    <include
+        android:id="@+id/profile_additional_info_description_layout"
+        layout="@layout/profile_additional_info_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/profile_additional_info_city_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
