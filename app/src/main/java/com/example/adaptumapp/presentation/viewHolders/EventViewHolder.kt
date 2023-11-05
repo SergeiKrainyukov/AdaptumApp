@@ -12,6 +12,7 @@ class EventViewHolder(private val view: View, private val registerAction: ((Int)
     fun bind(eventItem: EventListItem) {
         with(view) {
             findViewById<TextView>(R.id.title).text = eventItem.title
+            findViewById<TextView>(R.id.status_tv).text = eventItem.status
             findViewById<TextView>(R.id.date).text = eventItem.date
             findViewById<TextView>(R.id.description).text = eventItem.description
             findViewById<Button>(R.id.register_button).apply {

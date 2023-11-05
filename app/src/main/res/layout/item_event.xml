@@ -8,13 +8,30 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="15dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="15dp">
 
-        <ImageView
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/img_training" />
+            android:layout_height="200dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/img_training" />
+
+            <TextView
+                android:id="@+id/status_tv"
+                style="@style/TitleTextStyleWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:layout_margin="20dp"
+                android:padding="5dp"
+                android:background="@color/theme_violet"
+                tools:text="Регистрация" />
+        </FrameLayout>
+
 
         <TextView
             android:id="@+id/title"
@@ -31,9 +48,9 @@
 
         <TextView
             android:id="@+id/description"
+            style="@style/NormalTextStyleBlack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/NormalTextStyleBlack"
             tools:text="Описание" />
 
         <Button
