@@ -61,29 +61,29 @@ class ProfileFragment : Fragment() {
     private fun setViews(profileDataUI: ProfileDataUI) {
         with(binding) {
             with(profileDataUI) {
-                Glide.with(requireContext()).load(avatarUrl).into(avatar)
+                if (avatarUrl.isNotBlank()) Glide.with(requireContext()).load(avatarUrl)
+                    .into(avatar)
                 nameTv.text = name
                 with(profileAdditionalInfoJobLayout) {
-                    title.text = "Должность"
+                    title.text = getString(R.string.job)
                     description.text = profileDataUI.job
                     icon.setImageResource(R.drawable.ic_work)
                 }
                 with(profileAdditionalInfoOrganizationLayout) {
-                    title.text = "Организация"
+                    title.text = getString(R.string.organization)
                     description.text = profileDataUI.organization
                     icon.setImageResource(R.drawable.ic_business)
                 }
                 with(profileAdditionalInfoMailLayout) {
-                    title.text = "Эл.почта"
+                    title.text = getString(R.string.mail)
                     description.text = profileDataUI.mail
                     icon.setImageResource(R.drawable.ic_mail)
                 }
                 with(profileAdditionalInfoCityLayout) {
-                    title.text = "Город"
+                    title.text = getString(R.string.city)
                     description.text = profileDataUI.city
                     icon.setImageResource(R.drawable.ic_city)
                 }
-
             }
         }
     }
