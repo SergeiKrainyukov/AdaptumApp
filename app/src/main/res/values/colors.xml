@@ -5,4 +5,10 @@
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#F8F8F8</color>
     <color name="grey_divider">#BCBCBC</color>
+
+    <color name="theme_light_grey">#515d74</color>
+    <color name="theme_green">#49b857</color>
+    <color name="theme_dark_grey">#212525</color>
+    <color name="theme_yellow">#f3b000</color>
+    <color name="theme_violet">#6767f5</color>
 </resources>
