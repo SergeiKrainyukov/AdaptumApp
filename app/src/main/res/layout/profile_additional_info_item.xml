@@ -35,7 +35,6 @@
         tools:text="Менеджер по маркетингу" />
 
     <View
-        android:id="@+id/imageView2"
         android:layout_width="0dp"
         android:layout_height="2dp"
         android:layout_marginTop="20dp"

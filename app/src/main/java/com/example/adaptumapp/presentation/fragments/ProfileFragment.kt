@@ -5,9 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.Glide
 import com.example.adaptumapp.AdaptumApp
+import com.example.adaptumapp.R
 import com.example.adaptumapp.databinding.FragmentProfileBinding
+import com.example.adaptumapp.presentation.model.ProfileDataUI
 import com.example.adaptumapp.presentation.viewModels.ProfileFragmentViewModel
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class ProfileFragment : Fragment() {
@@ -33,6 +42,51 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        bindViewModel()
         viewModel.init()
     }
+
+    private fun bindViewModel() {
+        lifecycleScope.launch {
+            viewModel.profileDataState.flowWithLifecycle(
+                lifecycle,
+                Lifecycle.State.RESUMED
+            ).filterNotNull()
+                .collectLatest {
+                    setViews(it)
+                }
+        }
+    }
+
+    private fun setViews(profileDataUI: ProfileDataUI) {
+        with(binding) {
+            with(profileDataUI) {
+                Glide.with(requireContext()).load(avatarUrl).into(avatar)
+                nameTv.text = name
+                with(profileAdditionalInfoJobLayout) {
+                    title.text = "Должность"
+                    description.text = profileDataUI.job
+                    icon.setImageResource(R.drawable.ic_work)
+                }
+                with(profileAdditionalInfoOrganizationLayout) {
+                    title.text = "Организация"
+                    description.text = profileDataUI.organization
+                    icon.setImageResource(R.drawable.ic_business)
+                }
+                with(profileAdditionalInfoMailLayout) {
+                    title.text = "Эл.почта"
+                    description.text = profileDataUI.mail
+                    icon.setImageResource(R.drawable.ic_mail)
+                }
+                with(profileAdditionalInfoCityLayout) {
+                    title.text = "Город"
+                    description.text = profileDataUI.city
+                    icon.setImageResource(R.drawable.ic_city)
+                }
+
+            }
+        }
+    }
+
+
 }
