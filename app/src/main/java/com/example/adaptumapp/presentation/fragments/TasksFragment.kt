@@ -10,6 +10,7 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.example.adaptumapp.AdaptumApp
 import com.example.adaptumapp.databinding.FragmentTasksBinding
+import com.example.adaptumapp.presentation.adapters.TasksListAdapter
 import com.example.adaptumapp.presentation.viewModels.TasksFragmentViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.filterNotNull
@@ -19,6 +20,8 @@ import javax.inject.Inject
 class TasksFragment : Fragment() {
 
     private lateinit var binding: FragmentTasksBinding
+
+    private lateinit var tasksListAdapter: TasksListAdapter
 
     @Inject
     lateinit var viewModel: TasksFragmentViewModel
@@ -46,12 +49,12 @@ class TasksFragment : Fragment() {
 
     private fun bindViewModel() {
         lifecycleScope.launch {
-            viewModel.trainingsState.flowWithLifecycle(
+            viewModel.tasksState.flowWithLifecycle(
                 lifecycle,
                 Lifecycle.State.RESUMED
             ).filterNotNull()
                 .collectLatest {
-
+                    tasksListAdapter.submitList(it)
                 }
         }
     }
@@ -61,56 +64,9 @@ class TasksFragment : Fragment() {
     }
 
     private fun initRecyclerView() {
-
+        tasksListAdapter = TasksListAdapter()
+        with(binding.tasksRv) {
+            adapter = tasksListAdapter
+        }
     }
 }
-
-//class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
-//
-//    private lateinit var trainingsListAdapter: TrainingsListAdapter
-//
-//    private lateinit var binding: FragmentTrainingsBinding
-//
-//    @Inject
-//    lateinit var viewModel: TrainingsFragmentViewModel
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        (requireActivity().application as SynergySportApp).appComponent.inject(this)
-//    }
-//
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View {
-//        binding = FragmentTrainingsBinding.inflate(inflater, container, false)
-//        return binding.root
-//    }
-//
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//        initViews()
-//        bindViewModel()
-//        viewModel.init()
-//    }
-//
-//    private fun bindViewModel() {
-//        viewModel.trainingsLiveData.observe(viewLifecycleOwner) {
-//            trainingsListAdapter.submitList(
-//                it
-//            )
-//        }
-//    }
-//
-//    private fun initViews() {
-//        initRecyclerView()
-//    }
-//
-//    private fun initRecyclerView() {
-//        trainingsListAdapter = TrainingsListAdapter()
-//        with(binding.trainingsRv) {
-//            adapter = trainingsListAdapter
-//        }
-//    }
-//}
