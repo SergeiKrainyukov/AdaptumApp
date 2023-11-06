@@ -2,6 +2,8 @@ package com.example.adaptumapp.presentation
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -13,6 +15,7 @@ import com.example.adaptumapp.presentation.fragments.EventsFragment
 import com.example.adaptumapp.presentation.fragments.ProfileFragment
 import com.example.adaptumapp.presentation.fragments.TasksFragment
 import com.google.android.material.navigation.NavigationView
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -40,7 +43,7 @@ class MainActivity : AppCompatActivity() {
                     Navigator.navigateReplace(ProfileFragment(), supportFragmentManager)
                 }
 
-                R.id.nav_my_trainings -> {
+                R.id.nav_my_tasks -> {
                     Navigator.navigateReplace(TasksFragment(), supportFragmentManager)
                 }
 
@@ -51,6 +54,11 @@ class MainActivity : AppCompatActivity() {
             drawerLayout.closeDrawer(GravityCompat.START)
             true
         }
+        val navigationView = findViewById<View>(R.id.nav_view) as NavigationView
+        val headerView = navigationView.getHeaderView(0)
+        val navHeaderTextView = headerView.findViewById<View>(R.id.name_tv) as TextView
+        navHeaderTextView.text = "Анфиса Питонова"
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

@@ -5,14 +5,17 @@
 
     <item
         android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_profile"
         android:title="@string/nav_profile" />
 
     <item
-        android:id="@+id/nav_my_trainings"
-        android:title="@string/my_trainings" />
+        android:id="@+id/nav_my_tasks"
+        android:icon="@drawable/ic_tasks"
+        android:title="@string/tasks" />
 
     <item
         android:id="@+id/nav_events"
+        android:icon="@drawable/ic_event"
         android:title="@string/events" />
 
 </menu>
