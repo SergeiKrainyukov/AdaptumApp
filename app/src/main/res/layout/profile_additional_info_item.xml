@@ -11,7 +11,7 @@
         android:id="@+id/icon"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        app:tint="@color/test_toolbar"
+        app:tint="@color/test_success"
         android:src="@drawable/ic_work"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
