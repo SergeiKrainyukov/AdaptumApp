@@ -36,12 +36,14 @@
         <TextView
             android:id="@+id/title"
             style="@style/TitleTextStyleBlack"
+            android:layout_marginVertical="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="День здоровья" />
 
         <TextView
             android:id="@+id/date"
+            android:layout_marginVertical="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="08.10.2023" />
@@ -49,6 +51,7 @@
         <TextView
             android:id="@+id/description"
             style="@style/NormalTextStyleBlack"
+            android:layout_marginVertical="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="Описание" />
