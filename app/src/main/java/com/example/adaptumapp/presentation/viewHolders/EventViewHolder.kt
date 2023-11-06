@@ -21,10 +21,10 @@ class EventViewHolder(private val view: View, private val registerAction: ((Int)
                     setOnClickListener {
                         registerAction?.invoke(eventItem.id)
                     }
-                    setBackgroundColor(view.context.resources.getColor(R.color.primary_color))
+                    setBackgroundColor(view.context.resources.getColor(R.color.theme_green))
                     true
                 } else {
-                    setBackgroundColor(view.context.resources.getColor(R.color.grey))
+                    setBackgroundColor(view.context.resources.getColor(R.color.test_secondary))
                     false
                 }
             }

@@ -23,13 +23,14 @@
 
             <TextView
                 android:id="@+id/status_tv"
-                style="@style/TitleTextStyleWhite"
+                style="@style/NormalTextStyleWhite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|bottom"
                 android:layout_margin="20dp"
-                android:padding="5dp"
-                android:background="@color/theme_violet"
+                android:padding="10dp"
+                android:background="@drawable/rounded_background"
+                android:backgroundTint="@color/theme_green"
                 tools:text="Регистрация" />
         </FrameLayout>
 
@@ -62,6 +63,7 @@
             android:id="@+id/register_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/theme_green"
             android:layout_gravity="center"
             tools:text="Участвовать" />
     </LinearLayout>
