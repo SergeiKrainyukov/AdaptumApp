@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="15dp"
     android:layout_width="match_parent"
+    android:backgroundTint="@color/test_secondary"
     android:layout_height="150dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,7 +15,7 @@
 
         <TextView
             android:id="@+id/training_type_tv"
-            style="@style/TitleTextStyleBlack"
+            style="@style/TitleTextStyleWhite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +24,7 @@
 
         <TextView
             android:id="@+id/training_date_tv"
-            style="@style/NormalTextStyleBlack"
+            style="@style/NormalTextStyleWhite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -31,46 +32,24 @@
             tools:text="24.09.2023 18:55" />
 
         <TextView
-            android:id="@+id/cores_tv"
-            style="@style/NormalTextStyleBlack"
+            android:id="@+id/time_tv"
+            style="@style/NormalTextStyleWhite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:text="Баллы"
+            android:text="Время"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/training_type_tv" />
 
         <TextView
-            android:id="@+id/time_tv"
-            style="@style/NormalTextStyleBlack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginStart="40dp"
-            android:text="Время"
-            app:layout_constraintTop_toTopOf="@id/training_type_tv"
-            app:layout_constraintStart_toEndOf="@id/cores_tv" />
-
-        <TextView
-            android:id="@+id/cores_count_tv"
-            style="@style/NormalTextStyleBlack"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="5"
-            app:layout_constraintTop_toTopOf="@id/cores_tv"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
             android:id="@+id/time_count_tv"
-            style="@style/NormalTextStyleBlack"
+            style="@style/NormalTextStyleWhite"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:layout_marginStart="40dp"
             android:text="14 min"
-            app:layout_constraintTop_toTopOf="@id/time_tv"
-            app:layout_constraintStart_toEndOf="@id/cores_count_tv" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/time_tv" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

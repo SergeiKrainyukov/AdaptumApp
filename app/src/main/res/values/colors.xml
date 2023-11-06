@@ -11,4 +11,14 @@
     <color name="theme_dark_grey">#212525</color>
     <color name="theme_yellow">#f3b000</color>
     <color name="theme_violet">#6767f5</color>
+
+    <color name="test_primary">#121212</color>
+    <color name="test_secondary">#1E1E1E</color>
+    <color name="test_text_primary">#FFFFFF</color>
+    <color name="test_text_secondary">#8D8D8D</color>
+    <color name="test_accent">#0B8F92</color>
+    <color name="test_divider">#333333</color>
+    <color name="test_error">#CF6679</color>
+    <color name="test_success">#00D65F</color>
+    <color name="test_toolbar">#006400</color>
 </resources>

@@ -1,7 +1,7 @@
 <resources>
     <!-- Base application theme. -->
     <style name="Theme.AdaptumApp" parent="Theme.MaterialComponents.Light.DarkActionBar">
-        <item name="colorPrimary">@color/theme_green</item>
-        <item name="colorPrimaryDark">@color/theme_green</item>
+        <item name="colorPrimary">@color/test_toolbar</item>
+        <item name="colorPrimaryDark">@color/test_toolbar</item>
     </style>
 </resources>
