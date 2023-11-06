@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <color name="primary_color">#003459</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
@@ -21,4 +21,6 @@
     <color name="test_error">#CF6679</color>
     <color name="test_success">#00D65F</color>
     <color name="test_toolbar">#006400</color>
+
+    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#8D8D8D</color>
 </resources>

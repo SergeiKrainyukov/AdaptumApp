@@ -4,6 +4,7 @@ import com.example.adaptumapp.di.modules.AppModule
 import com.example.adaptumapp.di.modules.HandlersModule
 import com.example.adaptumapp.presentation.MainActivity
 import com.example.adaptumapp.presentation.fragments.EventsFragment
+import com.example.adaptumapp.presentation.fragments.LoginFragment
 import com.example.adaptumapp.presentation.fragments.ProfileFragment
 import com.example.adaptumapp.presentation.fragments.TaskFragment
 import com.example.adaptumapp.presentation.fragments.TasksFragment
@@ -28,5 +29,7 @@ interface AppComponent {
     fun inject(tasksFragment: TasksFragment)
 
     fun inject(taskFragment: TaskFragment)
+
+    fun inject(loginFragment: LoginFragment)
 
 }

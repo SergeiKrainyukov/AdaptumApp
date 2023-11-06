@@ -16,4 +16,13 @@
     <string name="mail">Эл.почта</string>
     <string name="city">Город</string>
 
+    <!--AuthScreen-->
+    <string name="input_username_field">Введите имя пользователя</string>
+    <string name="input_password_field">Введите пароль</string>
+    <string name="auth_button_title">Вход</string>
+    <string name="error_auth_message">Неверный логин или пароль</string>
+    <string name="login_title">Войти</string>
+    <string name="login_text_view_title">Логин</string>
+    <string name="password_text_view_title">Пароль</string>
+
 </resources>

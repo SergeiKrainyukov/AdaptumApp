@@ -12,6 +12,7 @@ import com.example.adaptumapp.AdaptumApp
 import com.example.adaptumapp.R
 import com.example.adaptumapp.presentation.common.Navigator
 import com.example.adaptumapp.presentation.fragments.EventsFragment
+import com.example.adaptumapp.presentation.fragments.LoginFragment
 import com.example.adaptumapp.presentation.fragments.ProfileFragment
 import com.example.adaptumapp.presentation.fragments.TasksFragment
 import com.google.android.material.navigation.NavigationView
@@ -27,7 +28,8 @@ class MainActivity : AppCompatActivity() {
         (application as AdaptumApp).appComponent.inject(this)
         setContentView(R.layout.activity_main)
         initToolbar()
-        openTasksFragment()
+//        openTasksFragment()
+        openLoginFragment()
     }
 
     private fun initToolbar() {
@@ -69,5 +71,9 @@ class MainActivity : AppCompatActivity() {
 
     fun openTasksFragment(){
         Navigator.navigateReplace(TasksFragment(), supportFragmentManager)
+    }
+
+    fun openLoginFragment(){
+        Navigator.navigateReplace(LoginFragment(), supportFragmentManager)
     }
 }
