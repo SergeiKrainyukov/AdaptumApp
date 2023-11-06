@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.example.adaptumapp.AdaptumApp
 import com.example.adaptumapp.R
 import com.example.adaptumapp.databinding.FragmentProfileBinding
+import com.example.adaptumapp.presentation.common.Navigator
 import com.example.adaptumapp.presentation.model.ProfileDataUI
 import com.example.adaptumapp.presentation.viewModels.ProfileFragmentViewModel
 import kotlinx.coroutines.flow.collectLatest
@@ -83,6 +84,9 @@ class ProfileFragment : Fragment() {
                     title.text = getString(R.string.city)
                     description.text = profileDataUI.city
                     icon.setImageResource(R.drawable.ic_city)
+                }
+                logoutBtn.setOnClickListener {
+                    Navigator.navigateReplace(LoginFragment(), parentFragmentManager)
                 }
             }
         }
