@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         (application as AdaptumApp).appComponent.inject(this)
         setContentView(R.layout.activity_main)
         initToolbar()
+        openTasksFragment()
     }
 
     private fun initToolbar() {
@@ -56,5 +57,9 @@ class MainActivity : AppCompatActivity() {
         return if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
             return true
         } else super.onOptionsItemSelected(item)
+    }
+
+    fun openTasksFragment(){
+        Navigator.navigateReplace(TasksFragment(), supportFragmentManager)
     }
 }
