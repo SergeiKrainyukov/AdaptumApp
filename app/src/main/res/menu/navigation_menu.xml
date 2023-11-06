@@ -18,4 +18,9 @@
         android:icon="@drawable/ic_event"
         android:title="@string/events" />
 
+    <item
+        android:id="@+id/nav_help"
+        android:icon="@drawable/ic_help"
+        android:title="@string/help" />
+
 </menu>

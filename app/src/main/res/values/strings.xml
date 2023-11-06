@@ -8,6 +8,7 @@
     <string name="nav_profile">Профиль</string>
     <string name="tasks">Задачи</string>
     <string name="events">События</string>
+    <string name="help">Поддержка</string>
 
     <!--ProfileScreen-->
     <string name="logout">Выйти</string>

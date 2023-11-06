@@ -12,6 +12,7 @@ import com.example.adaptumapp.AdaptumApp
 import com.example.adaptumapp.R
 import com.example.adaptumapp.presentation.common.Navigator
 import com.example.adaptumapp.presentation.fragments.EventsFragment
+import com.example.adaptumapp.presentation.fragments.HelpFragment
 import com.example.adaptumapp.presentation.fragments.LoginFragment
 import com.example.adaptumapp.presentation.fragments.ProfileFragment
 import com.example.adaptumapp.presentation.fragments.TasksFragment
@@ -51,6 +52,10 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.nav_events -> {
                     Navigator.navigateReplace(EventsFragment(), supportFragmentManager)
+                }
+
+                R.id.nav_help -> {
+                    Navigator.navigateReplace(HelpFragment(), supportFragmentManager)
                 }
             }
             drawerLayout.closeDrawer(GravityCompat.START)
