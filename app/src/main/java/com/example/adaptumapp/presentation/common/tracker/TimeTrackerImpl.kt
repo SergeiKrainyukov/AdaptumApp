@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 
-class TimerTrackerImpl @Inject constructor() : TimerTracker, CountDownTimer(Long.MAX_VALUE, 1000) {
+class TimeTrackerImpl @Inject constructor() : TimeTracker, CountDownTimer(Long.MAX_VALUE, 1000) {
 
     private val timeState = MutableStateFlow(0L)
     private var elapsedTime = 0L
@@ -18,7 +18,7 @@ class TimerTrackerImpl @Inject constructor() : TimerTracker, CountDownTimer(Long
 
     override fun onTick(p0: Long) {
         elapsedTime += 1000
-        timeState.value = elapsedTime
+        timeState.value = elapsedTime / 1000
     }
 
     override fun onFinish() {

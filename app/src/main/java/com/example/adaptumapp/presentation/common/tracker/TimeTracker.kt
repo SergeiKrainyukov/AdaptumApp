@@ -2,7 +2,7 @@ package com.example.adaptumapp.presentation.common.tracker
 
 import kotlinx.coroutines.flow.StateFlow
 
-interface TimerTracker {
+interface TimeTracker {
     fun startTimer()
     fun stopTimer()
     fun pause()

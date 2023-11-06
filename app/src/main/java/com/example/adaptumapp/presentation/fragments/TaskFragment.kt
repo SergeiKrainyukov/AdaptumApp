@@ -1,15 +1,20 @@
 package com.example.adaptumapp.presentation.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import com.example.adaptumapp.AdaptumApp
 import com.example.adaptumapp.R
 import com.example.adaptumapp.databinding.FragmentTaskBinding
 import com.example.adaptumapp.presentation.viewModels.TaskFragmentViewModel
-import com.example.adaptumapp.presentation.viewModels.TasksFragmentViewModel
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class TaskFragment : Fragment() {
@@ -41,8 +46,11 @@ class TaskFragment : Fragment() {
     }
 
     private fun initPauseButton() {
-        binding.pauseButton.setOnClickListener {
-            viewModel.onClickPauseResume()
+        binding.pauseButton.apply {
+            setOnClickListener {
+                viewModel.onClickPauseResume()
+                setImageResource(if (viewModel.isStarted) R.drawable.ic_pause else R.drawable.ic_play)
+            }
         }
     }
 
@@ -57,7 +65,15 @@ class TaskFragment : Fragment() {
 
     private fun bindViewModel() {
         with(viewModel) {
-
+            lifecycleScope.launch {
+                viewModel.timeCountState.flowWithLifecycle(
+                    lifecycle,
+                    Lifecycle.State.RESUMED
+                ).filterNotNull()
+                    .collectLatest {
+                        binding.currentMetricValue.text = it.toString()
+                    }
+            }
         }
     }
 }

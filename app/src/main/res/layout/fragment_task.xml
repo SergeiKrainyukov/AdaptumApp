@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/test_primary">
 
     <TextView
         android:id="@+id/current_metric_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:text="0"
+        android:textColor="@color/white"
         android:textSize="60sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/unit_name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:text="c"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/current_metric_value"
-        tools:text="c" />
+        app:layout_constraintTop_toBottomOf="@+id/current_metric_value" />
 
 
     <LinearLayout
@@ -49,10 +49,11 @@
             android:layout_height="66dp"
             android:layout_margin="6dp"
             android:background="@drawable/round_button"
+            android:backgroundTint="@color/test_secondary"
             android:importantForAccessibility="no"
             android:padding="15dp"
-            android:src="@drawable/ic_pause"
-            android:textColor="@android:color/white" />
+            android:src="@drawable/ic_play"
+            app:tint="@color/white" />
 
         <ImageView
             android:id="@+id/stop_button"
@@ -60,10 +61,10 @@
             android:layout_height="66dp"
             android:layout_margin="6dp"
             android:background="@drawable/round_button"
+            android:backgroundTint="@color/test_secondary"
             android:importantForAccessibility="no"
             android:padding="10dp"
-            android:src="@drawable/ic_stop"
-            android:textColor="@android:color/white" />
+            android:src="@drawable/ic_stop" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
