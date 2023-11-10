@@ -2,7 +2,7 @@ package com.example.adaptumapp.presentation.model
 
 data class TaskListItem(
     val id: Int,
-    val type: String,
+    val name: String,
+    val description: String,
     val date: String,
-    val status: String,
 )

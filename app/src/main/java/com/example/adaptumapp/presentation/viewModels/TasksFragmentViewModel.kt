@@ -20,15 +20,9 @@ class TasksFragmentViewModel @Inject constructor() : ViewModel() {
             val list = listOf(
                 TaskListItem(
                     0,
-                    type = "Бег",
+                    name = "Познакомиться с коллегами",
                     date = "10.10.2023",
-                    status = "К выполнению"
-                ),
-                TaskListItem(
-                    1,
-                    type = "Ходьба",
-                    date = "11.11.2023",
-                    status = "К выполнению"
+                    description = "Познакомиться с коллегами и попить чай"
                 ),
             )
             _tasksState.emit(list)

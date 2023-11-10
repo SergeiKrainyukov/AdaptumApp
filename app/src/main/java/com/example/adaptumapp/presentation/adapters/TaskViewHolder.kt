@@ -8,6 +8,8 @@ import com.example.adaptumapp.presentation.model.TaskListItem
 
 class TaskViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
     fun bind(training: TaskListItem) {
-        view.findViewById<TextView>(R.id.task_name_tv).text = training.type
+        view.findViewById<TextView>(R.id.task_name_tv).text = training.name
+        view.findViewById<TextView>(R.id.description_tv).text = training.description
+        view.findViewById<TextView>(R.id.created_date_tv).text = training.date
     }
 }
