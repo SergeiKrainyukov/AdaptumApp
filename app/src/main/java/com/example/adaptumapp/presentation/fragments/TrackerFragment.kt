@@ -10,15 +10,15 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.example.adaptumapp.AdaptumApp
 import com.example.adaptumapp.R
-import com.example.adaptumapp.databinding.FragmentTaskBinding
+import com.example.adaptumapp.databinding.FragmentTrackerBinding
 import com.example.adaptumapp.presentation.viewModels.TaskFragmentViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class TaskFragment : Fragment() {
-    private lateinit var binding: FragmentTaskBinding
+class TrackerFragment : Fragment() {
+    private lateinit var binding: FragmentTrackerBinding
 
     @Inject
     lateinit var viewModel: TaskFragmentViewModel
@@ -28,7 +28,7 @@ class TaskFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentTaskBinding.inflate(inflater, container, false)
+        binding = FragmentTrackerBinding.inflate(inflater, container, false)
         return binding.root
     }
 

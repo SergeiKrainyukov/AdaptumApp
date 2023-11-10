@@ -70,7 +70,7 @@ class TasksFragment : Fragment() {
             adapter = tasksListAdapter
         }
         tasksListAdapter.onClickTask = {
-            Navigator.navigateReplaceSaveStack(TaskFragment(), parentFragmentManager)
+            Navigator.navigateReplaceSaveStack(TrackerFragment(), parentFragmentManager)
         }
     }
 }
