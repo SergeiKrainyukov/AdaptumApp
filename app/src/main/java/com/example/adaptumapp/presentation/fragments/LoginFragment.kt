@@ -41,5 +41,6 @@ class LoginFragment : Fragment() {
 
     private fun openTasksScreen() {
         Navigator.navigateReplace(TasksFragment(), parentFragmentManager)
+        (requireActivity() as? ToolbarVisibilityListener)?.showToolbar()
     }
 }
