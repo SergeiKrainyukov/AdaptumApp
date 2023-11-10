@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.example.adaptumapp.AdaptumApp
 import com.example.adaptumapp.databinding.FragmentLoginBinding
 import com.example.adaptumapp.presentation.common.Navigator
+import com.example.adaptumapp.presentation.common.ToolbarVisibilityListener
 
 class LoginFragment : Fragment() {
 
@@ -23,6 +24,7 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
+        (requireActivity() as? ToolbarVisibilityListener)?.hideToolbar()
         return binding.root
     }
 

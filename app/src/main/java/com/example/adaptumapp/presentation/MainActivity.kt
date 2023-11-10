@@ -11,6 +11,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.example.adaptumapp.AdaptumApp
 import com.example.adaptumapp.R
 import com.example.adaptumapp.presentation.common.Navigator
+import com.example.adaptumapp.presentation.common.ToolbarVisibilityListener
 import com.example.adaptumapp.presentation.fragments.EventsFragment
 import com.example.adaptumapp.presentation.fragments.HelpFragment
 import com.example.adaptumapp.presentation.fragments.LoginFragment
@@ -19,7 +20,7 @@ import com.example.adaptumapp.presentation.fragments.TasksFragment
 import com.google.android.material.navigation.NavigationView
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ToolbarVisibilityListener {
 
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
@@ -80,5 +81,13 @@ class MainActivity : AppCompatActivity() {
 
     fun openLoginFragment(){
         Navigator.navigateReplace(LoginFragment(), supportFragmentManager)
+    }
+
+    override fun showToolbar() {
+        supportActionBar?.show()
+    }
+
+    override fun hideToolbar() {
+        supportActionBar?.hide()
     }
 }
