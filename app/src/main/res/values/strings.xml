@@ -26,4 +26,7 @@
     <string name="login_text_view_title">Логин</string>
     <string name="password_text_view_title">Пароль</string>
 
+    <!--TasksScreen-->
+
+
 </resources>
