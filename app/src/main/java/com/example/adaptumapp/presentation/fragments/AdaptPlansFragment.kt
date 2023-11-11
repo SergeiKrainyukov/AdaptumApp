@@ -9,7 +9,7 @@ import com.example.adaptumapp.AdaptumApp
 import com.example.adaptumapp.databinding.FragmentAdaptPlansBinding
 import com.example.adaptumapp.presentation.adapters.AdaptPlansListAdapter
 import com.example.adaptumapp.presentation.common.Navigator
-import com.example.adaptumapp.presentation.model.AdaptPlanListItem
+import com.example.adaptumapp.presentation.common.collectFlow
 import com.example.adaptumapp.presentation.viewModels.AdaptPlansFragmentViewModel
 import javax.inject.Inject
 
@@ -38,6 +38,8 @@ class AdaptPlansFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
+        bindViewModel()
+        viewModel.init()
     }
 
     private fun initRecyclerView() {
@@ -46,30 +48,36 @@ class AdaptPlansFragment : Fragment() {
         adaptPlansListAdapter.onClickAction = {
             Navigator.navigateReplaceSaveStack(TasksFragment(), parentFragmentManager)
         }
-        adaptPlansListAdapter.submitList(
-            listOf(
-                AdaptPlanListItem(
-                    0,
-                    "Бухгалтеры в филиале г. Новосибирск",
-                    "Адаптация главного бухгалтера тест",
-                    "3",
-                    "1",
-                    "3",
-                    "8",
-                    "",
-                    "08.11.2023"
-                ), AdaptPlanListItem(
-                    0,
-                    "Линейный персонал",
-                    "Онбординг младших менеджеров",
-                    "5",
-                    "5",
-                    "5",
-                    "17",
-                    "",
-                    "08.11.2023"
-                )
-            )
-        )
+//        adaptPlansListAdapter.submitList(
+//            listOf(
+//                AdaptPlanListItem(
+//                    0,
+//                    "Бухгалтеры в филиале г. Новосибирск",
+//                    "Адаптация главного бухгалтера тест",
+//                    "3",
+//                    "1",
+//                    "3",
+//                    "8",
+//                    "",
+//                    "08.11.2023"
+//                ), AdaptPlanListItem(
+//                    0,
+//                    "Линейный персонал",
+//                    "Онбординг младших менеджеров",
+//                    "5",
+//                    "5",
+//                    "5",
+//                    "17",
+//                    "",
+//                    "08.11.2023"
+//                )
+//            )
+//        )
+    }
+
+    fun bindViewModel() {
+        collectFlow(viewModel.adaptListState) {
+            adaptPlansListAdapter.submitList(it)
+        }
     }
 }

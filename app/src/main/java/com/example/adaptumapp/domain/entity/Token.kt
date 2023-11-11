@@ -1,3 +1,3 @@
 package com.example.adaptumapp.domain.entity
 
-data class TokenData(val token: String)
+data class Token(val token: String)

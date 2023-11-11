@@ -1,9 +1,9 @@
 package com.example.adaptumapp.domain.repository
 
-import com.example.adaptumapp.domain.entity.TokenData
-import com.example.adaptumapp.domain.entity.UserData
+import com.example.adaptumapp.domain.entity.Token
+import com.example.adaptumapp.domain.entity.User
 import kotlinx.coroutines.flow.Flow
 
 interface AuthRepository {
-    fun auth(userData: UserData): Flow<TokenData>
+    fun auth(user: User): Flow<Token>
 }

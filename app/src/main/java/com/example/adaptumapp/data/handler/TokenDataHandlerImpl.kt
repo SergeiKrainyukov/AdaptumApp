@@ -1,17 +1,17 @@
 package com.example.adaptumapp.data.handler
 
 import android.content.Context
-import com.example.adaptumapp.domain.entity.TokenData
+import com.example.adaptumapp.domain.entity.Token
 import com.example.adaptumapp.domain.handler.TokenDataHandler
 import javax.inject.Inject
 
 class TokenDataHandlerImpl @Inject constructor(private val context: Context) : TokenDataHandler {
-    override fun saveToken(tokenData: TokenData) {
+    override fun saveToken(token: Token) {
         getPrefs().edit()
-            .putString(TOKEN_DATA_KEY, tokenData.token).apply()
+            .putString(TOKEN_DATA_KEY, token.token).apply()
     }
 
-    override fun getToken() = TokenData(
+    override fun getToken() = Token(
         getPrefs()
             .getString(TOKEN_DATA_KEY, "") ?: ""
     )

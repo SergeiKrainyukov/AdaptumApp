@@ -1,5 +1,6 @@
 package com.example.adaptumapp.di.modules
 
+import com.example.adaptumapp.data.network.AdaptListApi
 import com.example.adaptumapp.data.network.AuthApi
 import com.example.adaptumapp.domain.handler.TokenDataHandler
 import com.google.gson.Gson
@@ -68,6 +69,11 @@ class NetworkModule {
     @Named("NoAuthInterceptor")
     fun provideNoAuthApi(@Named("NoAuthInterceptor") retrofit: Retrofit): AuthApi =
         retrofit.create(AuthApi::class.java)
+
+    @Provides
+    fun provideAdaptListApi(retrofit: Retrofit): AdaptListApi =
+        retrofit.create(AdaptListApi::class.java)
+
 
     companion object {
         private const val BASE_URL = "http://192.168.1.43:8000/"

@@ -1,8 +1,8 @@
 package com.example.adaptumapp.data.repository
 
 import com.example.adaptumapp.data.network.AuthApi
-import com.example.adaptumapp.domain.entity.TokenData
-import com.example.adaptumapp.domain.entity.UserData
+import com.example.adaptumapp.domain.entity.Token
+import com.example.adaptumapp.domain.entity.User
 import com.example.adaptumapp.domain.handler.TokenDataHandler
 import com.example.adaptumapp.domain.repository.AuthRepository
 import kotlinx.coroutines.flow.flow
@@ -16,17 +16,17 @@ class AuthRepositoryImpl @Inject constructor(
     private val tokenDataHandler: TokenDataHandler
 ) : AuthRepository {
 
-    private fun saveTokenData(tokenData: TokenData) {
-        tokenDataHandler.saveToken(tokenData)
+    private fun saveTokenData(token: Token) {
+        tokenDataHandler.saveToken(token)
     }
 
-    override fun auth(userData: UserData) = flow {
+    override fun auth(user: User) = flow {
         try {
-            val tokenDataDto = authApi.auth(userData)
+            val tokenDataDto = authApi.auth(user)
             saveTokenData(tokenDataDto.toDomainModel())
             emit(tokenDataDto.toDomainModel())
         } catch (e: Exception) {
-            emit(TokenData(""))
+            emit(Token(""))
         }
     }
 
