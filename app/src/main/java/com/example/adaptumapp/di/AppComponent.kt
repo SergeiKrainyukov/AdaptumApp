@@ -10,6 +10,7 @@ import com.example.adaptumapp.presentation.fragments.AdaptPlansFragment
 import com.example.adaptumapp.presentation.fragments.EventsFragment
 import com.example.adaptumapp.presentation.fragments.LoginFragment
 import com.example.adaptumapp.presentation.fragments.ProfileFragment
+import com.example.adaptumapp.presentation.fragments.StageFragment
 import com.example.adaptumapp.presentation.fragments.TrackerFragment
 import com.example.adaptumapp.presentation.fragments.StagesFragment
 import dagger.Component
@@ -40,5 +41,7 @@ interface AppComponent {
     fun inject(loginFragment: LoginFragment)
 
     fun inject(adaptPlansFragment: AdaptPlansFragment)
+
+    fun inject(stageFragment: StageFragment)
 
 }

@@ -9,6 +9,7 @@ import com.example.adaptumapp.presentation.viewModels.AdaptPlansFragmentViewMode
 import com.example.adaptumapp.presentation.viewModels.EventsFragmentViewModel
 import com.example.adaptumapp.presentation.viewModels.LoginFragmentViewModel
 import com.example.adaptumapp.presentation.viewModels.ProfileFragmentViewModel
+import com.example.adaptumapp.presentation.viewModels.StageFragmentViewModel
 import com.example.adaptumapp.presentation.viewModels.StagesFragmentViewModel
 import dagger.Binds
 import dagger.Module
@@ -44,6 +45,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(MainActivityViewModel::class)
     internal abstract fun bindMainActivityViewModel(viewModel: MainActivityViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(StageFragmentViewModel::class)
+    internal abstract fun bindStageFragmentViewModel(viewModel: StageFragmentViewModel): ViewModel
 
     @Binds
     @IntoMap

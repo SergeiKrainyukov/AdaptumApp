@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/test_primary"
     android:padding="15dp"
-    tools:context=".presentation.fragments.TaskFragment">
+    tools:context=".presentation.fragments.StageFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -18,10 +18,10 @@
             style="@style/TitleTextStyleWhite"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Познакомиться с коллегами"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Познакомиться с коллегами" />
 
         <TextView
             android:id="@+id/description_tv"
@@ -29,10 +29,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Познакомиться с коллегами, попить чаю"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title_tv" />
+            app:layout_constraintTop_toBottomOf="@id/title_tv"
+            tools:text="Познакомиться с коллегами, попить чаю" />
 
         <TextView
             android:id="@+id/link_title"

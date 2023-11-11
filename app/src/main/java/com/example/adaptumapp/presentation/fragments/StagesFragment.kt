@@ -58,7 +58,7 @@ class StagesFragment : Fragment() {
             adapter = tasksListAdapter
         }
         tasksListAdapter.onClickTask = {
-            Navigator.navigateReplaceSaveStack(TaskFragment(), parentFragmentManager)
+            Navigator.navigateReplaceSaveStack(StageFragment(), parentFragmentManager)
         }
     }
 
