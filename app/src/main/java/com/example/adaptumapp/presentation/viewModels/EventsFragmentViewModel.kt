@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import java.lang.Exception
 import javax.inject.Inject
 
 class EventsFragmentViewModel @Inject constructor(
@@ -20,8 +21,12 @@ class EventsFragmentViewModel @Inject constructor(
 
     fun init() {
         viewModelScope.launch {
-            val list = getEventsUseCase()
-            _eventsState.emit(list)
+            try {
+                val list = getEventsUseCase().map { EventListItem.fromModel(it) }
+                _eventsState.emit(list)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
     }
 

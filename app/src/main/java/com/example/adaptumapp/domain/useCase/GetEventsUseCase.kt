@@ -1,13 +1,13 @@
 package com.example.adaptumapp.domain.useCase
 
-import com.example.adaptumapp.presentation.model.EventListItem
+import com.example.adaptumapp.domain.entity.Event
 import javax.inject.Inject
 
 class GetEventsUseCase @Inject constructor(
 
 ) {
     suspend operator fun invoke() = listOf(
-        EventListItem(
+        Event(
             id = 0,
             photoUrl = "",
             status = "Планируется",
@@ -15,7 +15,7 @@ class GetEventsUseCase @Inject constructor(
             description = "Описание события 1",
             date = "10.10.2023"
         ),
-        EventListItem(
+        Event(
             id = 1,
             photoUrl = "",
             status = "Планируется",
