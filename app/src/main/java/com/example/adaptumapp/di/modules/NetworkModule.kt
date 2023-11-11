@@ -76,7 +76,7 @@ class NetworkModule {
 
 
     companion object {
-        private const val BASE_URL = "http://192.168.1.43:8000/"
+        private const val BASE_URL = "http://79.174.94.65:8000/"
     }
 
 }
