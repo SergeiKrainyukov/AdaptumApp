@@ -6,6 +6,7 @@ import com.example.adaptumapp.di.modules.NetworkModule
 import com.example.adaptumapp.di.modules.RepositoryModule
 import com.example.adaptumapp.di.modules.ViewModelModule
 import com.example.adaptumapp.presentation.MainActivity
+import com.example.adaptumapp.presentation.fragments.AdaptPlansFragment
 import com.example.adaptumapp.presentation.fragments.EventsFragment
 import com.example.adaptumapp.presentation.fragments.LoginFragment
 import com.example.adaptumapp.presentation.fragments.ProfileFragment
@@ -37,5 +38,7 @@ interface AppComponent {
     fun inject(trackerFragment: TrackerFragment)
 
     fun inject(loginFragment: LoginFragment)
+
+    fun inject(adaptPlansFragment: AdaptPlansFragment)
 
 }

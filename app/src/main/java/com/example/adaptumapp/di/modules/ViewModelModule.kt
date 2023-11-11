@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.adaptumapp.di.AppViewModelFactory
 import com.example.adaptumapp.di.ViewModelKey
 import com.example.adaptumapp.presentation.MainActivityViewModel
+import com.example.adaptumapp.presentation.viewModels.AdaptPlansFragmentViewModel
 import com.example.adaptumapp.presentation.viewModels.EventsFragmentViewModel
 import com.example.adaptumapp.presentation.viewModels.LoginFragmentViewModel
 import com.example.adaptumapp.presentation.viewModels.ProfileFragmentViewModel
@@ -43,4 +44,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(MainActivityViewModel::class)
     internal abstract fun bindMainActivityViewModel(viewModel: MainActivityViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AdaptPlansFragmentViewModel::class)
+    internal abstract fun bindAdaptPlansFragmentViewModel(viewModel: AdaptPlansFragmentViewModel): ViewModel
 }
