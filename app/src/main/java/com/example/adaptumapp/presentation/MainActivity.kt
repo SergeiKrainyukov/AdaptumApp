@@ -13,14 +13,13 @@ import com.example.adaptumapp.R
 import com.example.adaptumapp.presentation.common.Navigator
 import com.example.adaptumapp.presentation.common.ToolbarVisibilityListener
 import com.example.adaptumapp.presentation.common.collectFlow
+import com.example.adaptumapp.presentation.fragments.AdaptPlansFragment
 import com.example.adaptumapp.presentation.fragments.EventsFragment
 import com.example.adaptumapp.presentation.fragments.HelpFragment
 import com.example.adaptumapp.presentation.fragments.LoginFragment
 import com.example.adaptumapp.presentation.fragments.ProfileFragment
-import com.example.adaptumapp.presentation.fragments.TasksFragment
 import com.google.android.material.navigation.NavigationView
 import javax.inject.Inject
-
 
 class MainActivity : AppCompatActivity(), ToolbarVisibilityListener {
 
@@ -53,15 +52,15 @@ class MainActivity : AppCompatActivity(), ToolbarVisibilityListener {
         findViewById<NavigationView>(R.id.nav_view).setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_profile -> {
-                    Navigator.navigateReplace(ProfileFragment(), supportFragmentManager)
+                    openProfileFragment()
                 }
 
-                R.id.nav_my_tasks -> {
-                    Navigator.navigateReplace(TasksFragment(), supportFragmentManager)
+                R.id.nav_my_plans -> {
+                    openPlansFragment()
                 }
 
                 R.id.nav_events -> {
-                    Navigator.navigateReplace(EventsFragment(), supportFragmentManager)
+                    openEventsFragment()
                 }
 
                 R.id.nav_help -> {
@@ -79,7 +78,7 @@ class MainActivity : AppCompatActivity(), ToolbarVisibilityListener {
 
     private fun bindViewModel() {
         collectFlow(mainActivityViewModel.isAuthorizedState) {
-            if (it) openTasksFragment() else openLoginFragment()
+            if (it) openPlansFragment() else openLoginFragment()
         }
     }
 
@@ -89,12 +88,20 @@ class MainActivity : AppCompatActivity(), ToolbarVisibilityListener {
         } else super.onOptionsItemSelected(item)
     }
 
-    private fun openTasksFragment() {
-        Navigator.navigateReplace(TasksFragment(), supportFragmentManager)
+    private fun openPlansFragment() {
+        Navigator.navigateReplace(AdaptPlansFragment(), supportFragmentManager)
     }
 
     private fun openLoginFragment() {
         Navigator.navigateReplace(LoginFragment(), supportFragmentManager)
+    }
+
+    private fun openProfileFragment() {
+        Navigator.navigateReplace(ProfileFragment(), supportFragmentManager)
+    }
+
+    private fun openEventsFragment() {
+        Navigator.navigateReplace(EventsFragment(), supportFragmentManager)
     }
 
     override fun showToolbar() {

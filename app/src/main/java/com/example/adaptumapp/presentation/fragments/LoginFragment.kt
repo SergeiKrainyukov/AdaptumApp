@@ -52,13 +52,13 @@ class LoginFragment : Fragment() {
 
     private fun bindViewModel() {
         collectFlow(viewModel.authStatusState) {
-            if (it) openTasksScreen()
+            if (it) openPlansScreen()
             else showToast("Error")
         }
     }
 
-    private fun openTasksScreen() {
-        Navigator.navigateReplace(TasksFragment(), parentFragmentManager)
+    private fun openPlansScreen() {
+        Navigator.navigateReplace(AdaptPlansFragment(), parentFragmentManager)
         (requireActivity() as? ToolbarVisibilityListener)?.showToolbar()
     }
 }

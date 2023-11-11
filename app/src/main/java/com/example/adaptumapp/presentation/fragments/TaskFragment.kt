@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import com.example.adaptumapp.R
 import com.example.adaptumapp.presentation.common.Navigator
 
-
 class TaskFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
