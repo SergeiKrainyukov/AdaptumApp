@@ -1,4 +1,4 @@
-package com.example.adaptumapp.data.network
+package com.example.adaptumapp.data.network.api
 
 import com.example.adaptumapp.data.network.dto.TokenDataDto
 import com.example.adaptumapp.domain.entity.User

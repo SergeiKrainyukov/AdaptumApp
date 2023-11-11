@@ -1,6 +1,6 @@
 package com.example.adaptumapp.data.repository
 
-import com.example.adaptumapp.data.network.AuthApi
+import com.example.adaptumapp.data.network.api.AuthApi
 import com.example.adaptumapp.domain.entity.Token
 import com.example.adaptumapp.domain.entity.User
 import com.example.adaptumapp.domain.handler.TokenDataHandler

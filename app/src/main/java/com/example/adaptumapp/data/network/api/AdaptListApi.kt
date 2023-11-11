@@ -1,4 +1,4 @@
-package com.example.adaptumapp.data.network
+package com.example.adaptumapp.data.network.api
 
 import com.example.adaptumapp.data.network.dto.AdaptPlanDto
 import com.example.adaptumapp.data.network.dto.StageDto

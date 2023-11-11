@@ -1,6 +1,6 @@
 package com.example.adaptumapp.data.repository
 
-import com.example.adaptumapp.data.network.AdaptListApi
+import com.example.adaptumapp.data.network.api.AdaptListApi
 import com.example.adaptumapp.domain.entity.AdaptPlan
 import com.example.adaptumapp.domain.entity.Stage
 import com.example.adaptumapp.domain.repository.PlansRepository

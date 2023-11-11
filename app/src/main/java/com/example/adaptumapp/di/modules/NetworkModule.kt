@@ -1,7 +1,8 @@
 package com.example.adaptumapp.di.modules
 
-import com.example.adaptumapp.data.network.AdaptListApi
-import com.example.adaptumapp.data.network.AuthApi
+import com.example.adaptumapp.data.network.api.AdaptListApi
+import com.example.adaptumapp.data.network.api.AuthApi
+import com.example.adaptumapp.data.network.api.ProfileDataApi
 import com.example.adaptumapp.domain.handler.TokenDataHandler
 import com.google.gson.Gson
 import dagger.Module
@@ -73,6 +74,10 @@ class NetworkModule {
     @Provides
     fun provideAdaptListApi(retrofit: Retrofit): AdaptListApi =
         retrofit.create(AdaptListApi::class.java)
+
+    @Provides
+    fun provideProfileDataApi(retrofit: Retrofit): ProfileDataApi =
+        retrofit.create(ProfileDataApi::class.java)
 
 
     companion object {

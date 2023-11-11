@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import java.lang.Exception
 import javax.inject.Inject
 
 class ProfileFragmentViewModel @Inject constructor(
@@ -20,8 +21,13 @@ class ProfileFragmentViewModel @Inject constructor(
 
     fun init() {
         viewModelScope.launch {
-            val profileData = getProfileDataUseCase()
-            _profileDataState.emit(ProfileDataUI.fromProfileData(profileData))
+            try {
+                val profileData = getProfileDataUseCase()
+                _profileDataState.emit(ProfileDataUI.fromProfileData(profileData))
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+
         }
     }
 }
