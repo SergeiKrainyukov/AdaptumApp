@@ -1,4 +1,4 @@
-package com.example.adaptumapp.presentation.adapters
+package com.example.adaptumapp.presentation.diffUtils
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.adaptumapp.presentation.model.TaskListItem

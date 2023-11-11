@@ -15,6 +15,26 @@
         android:padding="20dp">
 
         <TextView
+            android:id="@+id/start_date_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/test_text_secondary"
+            android:text="Дата начала: "
+            app:layout_constraintBottom_toTopOf="@id/plan_name_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/start_date_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10.10.2023"
+            android:textColor="@color/test_text_secondary"
+            app:layout_constraintBottom_toTopOf="@id/plan_name_tv"
+            app:layout_constraintStart_toEndOf="@+id/start_date_title"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
             android:id="@+id/plan_name_tv"
             style="@style/TitleTextStyleWhite"
             android:layout_width="0dp"
@@ -23,7 +43,7 @@
             android:text="Онбоардинг младших менеджеров"
             app:layout_constraintEnd_toStartOf="@+id/avatar"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/start_date_title"
             tools:text="Онбоардинг младших менеджеров" />
 
         <ImageView
@@ -61,7 +81,7 @@
             tools:text="Линейный персонал" />
 
         <TextView
-            android:id="@+id/time_сontrol_required"
+            android:id="@+id/countStages"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginTop="10dp"
@@ -76,7 +96,7 @@
             app:tint="@color/white" />
 
         <TextView
-            android:id="@+id/mentor_required"
+            android:id="@+id/countMentors"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginStart="10dp"
@@ -87,12 +107,12 @@
             android:text="5"
             android:textColor="@color/white"
             app:drawableTint="@color/white"
-            app:layout_constraintStart_toEndOf="@+id/time_сontrol_required"
+            app:layout_constraintStart_toEndOf="@+id/countStages"
             app:layout_constraintTop_toBottomOf="@+id/group_name_tv"
             app:tint="@color/white" />
 
         <TextView
-            android:id="@+id/study_materials"
+            android:id="@+id/count_materials"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginStart="10dp"
@@ -103,11 +123,11 @@
             android:textColor="@color/white"
             app:drawableTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/mentor_required"
+            app:layout_constraintStart_toEndOf="@+id/countMentors"
             app:tint="@color/white" />
 
         <TextView
-            android:id="@+id/time"
+            android:id="@+id/durationDays"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginStart="10dp"
@@ -118,7 +138,7 @@
             android:textColor="@color/white"
             app:drawableTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/study_materials"
+            app:layout_constraintStart_toEndOf="@+id/count_materials"
             app:tint="@color/white" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

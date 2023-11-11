@@ -4,7 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.example.adaptumapp.R
+import com.example.adaptumapp.presentation.diffUtils.TaskItemDiffCallback
 import com.example.adaptumapp.presentation.model.TaskListItem
+import com.example.adaptumapp.presentation.viewHolders.TaskViewHolder
 
 class TasksListAdapter : ListAdapter<TaskListItem, TaskViewHolder>(TaskItemDiffCallback()) {
 
