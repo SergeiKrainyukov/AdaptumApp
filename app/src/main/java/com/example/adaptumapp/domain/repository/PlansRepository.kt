@@ -5,5 +5,5 @@ import com.example.adaptumapp.domain.entity.Stage
 
 interface PlansRepository {
     suspend fun getAdaptPlans(): List<AdaptPlan>
-    suspend fun getStages(): List<Stage>
+    suspend fun getStages(groupId: Int): List<Stage>
 }

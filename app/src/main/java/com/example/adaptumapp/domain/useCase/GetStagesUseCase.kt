@@ -6,5 +6,5 @@ import javax.inject.Inject
 class GetStagesUseCase @Inject constructor(
     private val plansRepository: PlansRepository
 ) {
-    suspend operator fun invoke() = plansRepository.getStages()
+    suspend operator fun invoke(groupId: Int) = plansRepository.getStages(groupId)
 }

@@ -18,10 +18,10 @@ class StagesFragmentViewModel @Inject constructor(
     val stagesState: SharedFlow<List<StageListItem>>
         get() = _stagesState
 
-    fun init() {
+    fun init(groupId: Int) {
         viewModelScope.launch {
             try {
-                val list = getStagesUseCase().map { StageListItem.fromModel(it) }
+                val list = getStagesUseCase(groupId).map { StageListItem.fromModel(it) }
                 _stagesState.emit(list)
             } catch (e: Exception) {
                 e.printStackTrace()

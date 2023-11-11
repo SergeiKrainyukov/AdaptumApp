@@ -46,33 +46,8 @@ class AdaptPlansFragment : Fragment() {
         adaptPlansListAdapter = AdaptPlansListAdapter()
         binding.tasksRv.adapter = adaptPlansListAdapter
         adaptPlansListAdapter.onClickAction = {
-            Navigator.navigateReplaceSaveStack(StagesFragment(), parentFragmentManager)
+            Navigator.navigateReplaceSaveStack(StagesFragment.newInstance(it), parentFragmentManager)
         }
-//        adaptPlansListAdapter.submitList(
-//            listOf(
-//                AdaptPlanListItem(
-//                    0,
-//                    "Бухгалтеры в филиале г. Новосибирск",
-//                    "Адаптация главного бухгалтера тест",
-//                    "3",
-//                    "1",
-//                    "3",
-//                    "8",
-//                    "",
-//                    "08.11.2023"
-//                ), AdaptPlanListItem(
-//                    0,
-//                    "Линейный персонал",
-//                    "Онбординг младших менеджеров",
-//                    "5",
-//                    "5",
-//                    "5",
-//                    "17",
-//                    "",
-//                    "08.11.2023"
-//                )
-//            )
-//        )
     }
 
     fun bindViewModel() {

@@ -13,7 +13,7 @@ class PlansRepositoryImpl @Inject constructor(
         return adaptListApi.getAdaptPlans().map { it.toModel() }
     }
 
-    override suspend fun getStages(): List<Stage> {
-        return adaptListApi.getStages().map { it.toModel() }
+    override suspend fun getStages(groupId: Int): List<Stage> {
+        return adaptListApi.getStages(groupId).map { it.toModel() }
     }
 }

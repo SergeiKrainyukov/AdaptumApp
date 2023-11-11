@@ -39,7 +39,7 @@ class StagesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initViews()
         bindViewModel()
-        viewModel.init()
+        arguments?.getInt(GROUP_ID)?.let { viewModel.init(it) }
     }
 
     private fun bindViewModel() {
@@ -59,6 +59,17 @@ class StagesFragment : Fragment() {
         }
         tasksListAdapter.onClickTask = {
             Navigator.navigateReplaceSaveStack(TaskFragment(), parentFragmentManager)
+        }
+    }
+
+    companion object {
+
+        private const val GROUP_ID = "GROUP_ID"
+
+        fun newInstance(groupId: Int) = StagesFragment().apply {
+            arguments = Bundle().apply {
+                putInt(GROUP_ID, groupId)
+            }
         }
     }
 }
