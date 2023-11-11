@@ -5,27 +5,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.flowWithLifecycle
-import androidx.lifecycle.lifecycleScope
 import com.example.adaptumapp.AdaptumApp
-import com.example.adaptumapp.databinding.FragmentTasksBinding
+import com.example.adaptumapp.databinding.FragmentStagesBinding
 import com.example.adaptumapp.presentation.adapters.TasksListAdapter
 import com.example.adaptumapp.presentation.common.Navigator
-import com.example.adaptumapp.presentation.viewModels.TasksFragmentViewModel
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.filterNotNull
-import kotlinx.coroutines.launch
+import com.example.adaptumapp.presentation.common.collectFlow
+import com.example.adaptumapp.presentation.viewModels.StagesFragmentViewModel
 import javax.inject.Inject
 
-class TasksFragment : Fragment() {
+class StagesFragment : Fragment() {
 
-    private lateinit var binding: FragmentTasksBinding
-
+    private lateinit var binding: FragmentStagesBinding
     private lateinit var tasksListAdapter: TasksListAdapter
 
     @Inject
-    lateinit var viewModel: TasksFragmentViewModel
+    lateinit var viewModel: StagesFragmentViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +31,7 @@ class TasksFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentTasksBinding.inflate(inflater, container, false)
+        binding = FragmentStagesBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -49,14 +43,8 @@ class TasksFragment : Fragment() {
     }
 
     private fun bindViewModel() {
-        lifecycleScope.launch {
-            viewModel.tasksState.flowWithLifecycle(
-                lifecycle,
-                Lifecycle.State.RESUMED
-            ).filterNotNull()
-                .collectLatest {
-                    tasksListAdapter.submitList(it)
-                }
+        collectFlow(viewModel.stagesState) {
+            tasksListAdapter.submitList(it)
         }
     }
 

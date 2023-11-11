@@ -11,7 +11,7 @@ import com.example.adaptumapp.presentation.fragments.EventsFragment
 import com.example.adaptumapp.presentation.fragments.LoginFragment
 import com.example.adaptumapp.presentation.fragments.ProfileFragment
 import com.example.adaptumapp.presentation.fragments.TrackerFragment
-import com.example.adaptumapp.presentation.fragments.TasksFragment
+import com.example.adaptumapp.presentation.fragments.StagesFragment
 import dagger.Component
 import javax.inject.Singleton
 
@@ -33,7 +33,7 @@ interface AppComponent {
 
     fun inject(eventsFragment: EventsFragment)
 
-    fun inject(tasksFragment: TasksFragment)
+    fun inject(stagesFragment: StagesFragment)
 
     fun inject(trackerFragment: TrackerFragment)
 

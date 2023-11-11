@@ -46,7 +46,7 @@ class AdaptPlansFragment : Fragment() {
         adaptPlansListAdapter = AdaptPlansListAdapter()
         binding.tasksRv.adapter = adaptPlansListAdapter
         adaptPlansListAdapter.onClickAction = {
-            Navigator.navigateReplaceSaveStack(TasksFragment(), parentFragmentManager)
+            Navigator.navigateReplaceSaveStack(StagesFragment(), parentFragmentManager)
         }
 //        adaptPlansListAdapter.submitList(
 //            listOf(

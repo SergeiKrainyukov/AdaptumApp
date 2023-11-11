@@ -1,8 +1,8 @@
 package com.example.adaptumapp.di.modules
 
-import com.example.adaptumapp.data.repository.AdaptListRepositoryImpl
+import com.example.adaptumapp.data.repository.PlansRepositoryImpl
 import com.example.adaptumapp.data.repository.AuthRepositoryImpl
-import com.example.adaptumapp.domain.repository.AdaptListRepository
+import com.example.adaptumapp.domain.repository.PlansRepository
 import com.example.adaptumapp.domain.repository.AuthRepository
 import dagger.Binds
 import dagger.Module
@@ -13,5 +13,5 @@ abstract class RepositoryModule {
     abstract fun provideAuthRepository(repository: AuthRepositoryImpl): AuthRepository
 
     @Binds
-    abstract fun provideAdaptListRepository(adaptListRepositoryImpl: AdaptListRepositoryImpl): AdaptListRepository
+    abstract fun provideAdaptListRepository(adaptListRepositoryImpl: PlansRepositoryImpl): PlansRepository
 }
