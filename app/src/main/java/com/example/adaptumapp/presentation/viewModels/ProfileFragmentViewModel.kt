@@ -21,7 +21,7 @@ class ProfileFragmentViewModel @Inject constructor(
     fun init() {
         viewModelScope.launch {
             val profileData = getProfileDataUseCase()
-            _profileDataState.emit(profileData)
+            _profileDataState.emit(ProfileDataUI.fromProfileData(profileData))
         }
     }
 }
