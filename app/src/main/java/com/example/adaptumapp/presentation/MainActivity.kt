@@ -30,8 +30,8 @@ class MainActivity : AppCompatActivity(), ToolbarVisibilityListener {
         (application as AdaptumApp).appComponent.inject(this)
         setContentView(R.layout.activity_main)
         initToolbar()
-        openTasksFragment()
-//        openLoginFragment()
+//        openTasksFragment()
+        openLoginFragment()
     }
 
     private fun initToolbar() {
@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity(), ToolbarVisibilityListener {
         Navigator.navigateReplace(TasksFragment(), supportFragmentManager)
     }
 
-    fun openLoginFragment(){
+    private fun openLoginFragment(){
         Navigator.navigateReplace(LoginFragment(), supportFragmentManager)
     }
 

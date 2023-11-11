@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.adaptumapp.di.AppViewModelFactory
 import com.example.adaptumapp.di.ViewModelKey
 import com.example.adaptumapp.presentation.viewModels.EventsFragmentViewModel
+import com.example.adaptumapp.presentation.viewModels.LoginFragmentViewModel
 import com.example.adaptumapp.presentation.viewModels.ProfileFragmentViewModel
 import com.example.adaptumapp.presentation.viewModels.TasksFragmentViewModel
 import dagger.Binds
@@ -31,4 +32,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(TasksFragmentViewModel::class)
     internal abstract fun bindTasksFragmentViewModel(viewModel: TasksFragmentViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(LoginFragmentViewModel::class)
+    internal abstract fun bindLoginFragmentViewModel(viewModel: LoginFragmentViewModel): ViewModel
 }
