@@ -5,19 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.flowWithLifecycle
-import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.adaptumapp.AdaptumApp
 import com.example.adaptumapp.R
 import com.example.adaptumapp.databinding.FragmentProfileBinding
 import com.example.adaptumapp.presentation.common.Navigator
+import com.example.adaptumapp.presentation.common.collectFlow
 import com.example.adaptumapp.presentation.model.ProfileDataUI
 import com.example.adaptumapp.presentation.viewModels.ProfileFragmentViewModel
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.filterNotNull
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class ProfileFragment : Fragment() {
@@ -48,14 +43,8 @@ class ProfileFragment : Fragment() {
     }
 
     private fun bindViewModel() {
-        lifecycleScope.launch {
-            viewModel.profileDataState.flowWithLifecycle(
-                lifecycle,
-                Lifecycle.State.RESUMED
-            ).filterNotNull()
-                .collectLatest {
-                    setViews(it)
-                }
+        collectFlow(viewModel.profileDataState) {
+            it?.let { it1 -> setViews(it1) }
         }
     }
 

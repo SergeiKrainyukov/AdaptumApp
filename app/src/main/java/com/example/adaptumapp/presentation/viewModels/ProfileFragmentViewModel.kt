@@ -2,6 +2,7 @@ package com.example.adaptumapp.presentation.viewModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.adaptumapp.domain.useCase.GetProfileDataUseCase
 import com.example.adaptumapp.presentation.model.ProfileDataUI
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -9,7 +10,9 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class ProfileFragmentViewModel @Inject constructor() : ViewModel() {
+class ProfileFragmentViewModel @Inject constructor(
+    private val getProfileDataUseCase: GetProfileDataUseCase
+) : ViewModel() {
 
     private var _profileDataState = MutableStateFlow<ProfileDataUI?>(null)
     val profileDataState: StateFlow<ProfileDataUI?>
@@ -17,15 +20,8 @@ class ProfileFragmentViewModel @Inject constructor() : ViewModel() {
 
     fun init() {
         viewModelScope.launch {
-            val profileDataUI = ProfileDataUI(
-                avatarUrl = "",
-                name = "Анфиса Питонова",
-                job = "Менеджер по маркетингу",
-                organization = "ООО Адаптум",
-                mail = "anpitonova@mail.ru",
-                city = "Москва"
-            )
-            _profileDataState.emit(profileDataUI)
+            val profileData = getProfileDataUseCase()
+            _profileDataState.emit(profileData)
         }
     }
 }
