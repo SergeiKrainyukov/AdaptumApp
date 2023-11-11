@@ -2,6 +2,7 @@ package com.example.adaptumapp.presentation.viewModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.adaptumapp.domain.useCase.GetEventsUseCase
 import com.example.adaptumapp.presentation.model.EventListItem
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -10,6 +11,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class EventsFragmentViewModel @Inject constructor(
+    private val getEventsUseCase: GetEventsUseCase
 ) : ViewModel() {
 
     private val _eventsState = MutableStateFlow<List<EventListItem>?>(null)
@@ -18,24 +20,7 @@ class EventsFragmentViewModel @Inject constructor(
 
     fun init() {
         viewModelScope.launch {
-            val list = listOf(
-                EventListItem(
-                    id = 0,
-                    photoUrl = "",
-                    status = "Планируется",
-                    title = "День здоровья 1",
-                    description = "Описание события 1",
-                    date = "10.10.2023"
-                ),
-                EventListItem(
-                    id = 1,
-                    photoUrl = "",
-                    status = "Планируется",
-                    title = "День здоровья 2",
-                    description = "Описание события 2",
-                    date = "12.11.2023"
-                ),
-            )
+            val list = getEventsUseCase()
             _eventsState.emit(list)
         }
     }
