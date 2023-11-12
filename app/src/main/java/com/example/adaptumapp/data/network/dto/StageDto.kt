@@ -11,7 +11,7 @@ data class StageDto(
     @SerializedName("description") val description: String,
     @SerializedName("updated_at") val date: String,
     @SerializedName("file") val documentUrl: String?,
-    @SerializedName("link") val videoUrl: String?,
+    @SerializedName("link_video") val videoUrl: String?,
 ) {
     fun toModel() = Stage(
         id = id,
