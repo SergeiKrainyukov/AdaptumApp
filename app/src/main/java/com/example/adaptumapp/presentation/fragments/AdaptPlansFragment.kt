@@ -46,7 +46,13 @@ class AdaptPlansFragment : Fragment() {
         adaptPlansListAdapter = AdaptPlansListAdapter()
         binding.tasksRv.adapter = adaptPlansListAdapter
         adaptPlansListAdapter.onClickAction = {
-            Navigator.navigateReplaceSaveStack(StagesFragment.newInstance(it), parentFragmentManager)
+            Navigator.navigateReplaceSaveStack(
+                StagesFragment.newInstance(it),
+                parentFragmentManager
+            )
+        }
+        adaptPlansListAdapter.onClickSendMessageAction = {
+            Navigator.navigateReplaceSaveStack(HelpFragment(), parentFragmentManager)
         }
     }
 
