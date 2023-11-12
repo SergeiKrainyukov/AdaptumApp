@@ -65,10 +65,6 @@ class MainActivity : AppCompatActivity(), ToolbarVisibilityListener {
                 R.id.nav_events -> {
                     openEventsFragment()
                 }
-
-                R.id.nav_help -> {
-                    Navigator.navigateReplaceSaveStack(HelpFragment(), supportFragmentManager)
-                }
             }
             drawerLayout.closeDrawer(GravityCompat.START)
             true
