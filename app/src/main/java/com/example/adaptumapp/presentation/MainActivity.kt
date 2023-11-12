@@ -3,7 +3,6 @@ package com.example.adaptumapp.presentation
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -17,7 +16,6 @@ import com.example.adaptumapp.presentation.common.ToolbarVisibilityListener
 import com.example.adaptumapp.presentation.common.collectFlow
 import com.example.adaptumapp.presentation.fragments.AdaptPlansFragment
 import com.example.adaptumapp.presentation.fragments.EventsFragment
-import com.example.adaptumapp.presentation.fragments.HelpFragment
 import com.example.adaptumapp.presentation.fragments.LoginFragment
 import com.example.adaptumapp.presentation.fragments.ProfileFragment
 import com.example.adaptumapp.presentation.model.ProfileDataUI
@@ -36,6 +34,7 @@ class MainActivity : AppCompatActivity(), ToolbarVisibilityListener {
         super.onCreate(savedInstanceState)
         (application as AdaptumApp).appComponent.inject(this)
         setContentView(R.layout.activity_main)
+        initBaseToolbar()
         bindViewModel()
     }
 
@@ -45,7 +44,7 @@ class MainActivity : AppCompatActivity(), ToolbarVisibilityListener {
         mainActivityViewModel.getProfileData()
     }
 
-    private fun initToolbar(profileDataUI: ProfileDataUI) {
+    private fun initBaseToolbar() {
         drawerLayout = findViewById(R.id.my_drawer_layout)
         actionBarDrawerToggle =
             ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close)
@@ -69,6 +68,9 @@ class MainActivity : AppCompatActivity(), ToolbarVisibilityListener {
             drawerLayout.closeDrawer(GravityCompat.START)
             true
         }
+    }
+
+    private fun initToolbarInfo(profileDataUI: ProfileDataUI) {
         val navigationView = findViewById<View>(R.id.nav_view) as NavigationView
         val headerView = navigationView.getHeaderView(0)
         val navHeaderTextView = headerView.findViewById<View>(R.id.name_tv) as TextView
@@ -84,7 +86,7 @@ class MainActivity : AppCompatActivity(), ToolbarVisibilityListener {
             } else openLoginFragment()
         }
         collectFlow(mainActivityViewModel.profileDataState) {
-            it?.let { initToolbar(it) }
+            it?.let { initToolbarInfo(it) }
         }
     }
 
