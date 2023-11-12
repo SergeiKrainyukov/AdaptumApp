@@ -1,6 +1,6 @@
 package com.example.adaptumapp.data.network.dto
 
-import com.example.adaptumapp.domain.entity.StageMin
+import com.example.adaptumapp.domain.entity.Stage
 import com.google.gson.annotations.SerializedName
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -10,12 +10,16 @@ data class StageDto(
     @SerializedName("title") val title: String,
     @SerializedName("description") val description: String,
     @SerializedName("updated_at") val date: String,
+    @SerializedName("file") val documentUrl: String?,
+    @SerializedName("link") val videoUrl: String?,
 ) {
-    fun toModel() = StageMin(
+    fun toModel() = Stage(
         id = id,
         name = title,
         description = description,
         date = parseDate(date),
+        documentUrl = documentUrl ?: "",
+        videoUrl = videoUrl ?: ""
     )
 
     private fun parseDate(dateDto: String): String {
