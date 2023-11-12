@@ -1,6 +1,6 @@
 package com.example.adaptumapp.domain.entity
 
-data class Stage(
+data class StageMin(
     val id: Int,
     val name: String,
     val description: String,

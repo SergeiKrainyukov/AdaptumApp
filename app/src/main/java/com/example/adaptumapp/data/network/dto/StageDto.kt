@@ -1,6 +1,6 @@
 package com.example.adaptumapp.data.network.dto
 
-import com.example.adaptumapp.domain.entity.Stage
+import com.example.adaptumapp.domain.entity.StageMin
 import com.google.gson.annotations.SerializedName
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -11,7 +11,7 @@ data class StageDto(
     @SerializedName("description") val description: String,
     @SerializedName("updated_at") val date: String,
 ) {
-    fun toModel() = Stage(
+    fun toModel() = StageMin(
         id = id,
         name = title,
         description = description,
