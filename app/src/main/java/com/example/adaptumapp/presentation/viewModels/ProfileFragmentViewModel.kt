@@ -3,6 +3,7 @@ package com.example.adaptumapp.presentation.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.adaptumapp.domain.useCase.GetProfileDataUseCase
+import com.example.adaptumapp.domain.useCase.LogoutUseCase
 import com.example.adaptumapp.presentation.model.ProfileDataUI
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -10,9 +11,11 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import java.lang.Exception
 import javax.inject.Inject
+import kotlin.math.log
 
 class ProfileFragmentViewModel @Inject constructor(
-    private val getProfileDataUseCase: GetProfileDataUseCase
+    private val getProfileDataUseCase: GetProfileDataUseCase,
+    private val logoutUseCase: LogoutUseCase
 ) : ViewModel() {
 
     private var _profileDataState = MutableStateFlow<ProfileDataUI?>(null)
@@ -29,5 +32,9 @@ class ProfileFragmentViewModel @Inject constructor(
             }
 
         }
+    }
+
+    fun logout() {
+        logoutUseCase.invoke()
     }
 }

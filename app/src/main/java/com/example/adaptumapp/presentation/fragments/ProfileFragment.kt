@@ -75,6 +75,7 @@ class ProfileFragment : Fragment() {
                     icon.setImageResource(R.drawable.ic_city)
                 }
                 logoutBtn.setOnClickListener {
+                    viewModel.logout()
                     Navigator.navigateReplace(LoginFragment(), parentFragmentManager)
                 }
             }

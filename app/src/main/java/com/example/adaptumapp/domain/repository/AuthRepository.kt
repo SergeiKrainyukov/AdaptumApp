@@ -6,4 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface AuthRepository {
     fun auth(user: User): Flow<Token>
+    fun logout()
 }

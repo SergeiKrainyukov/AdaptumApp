@@ -30,5 +30,9 @@ class AuthRepositoryImpl @Inject constructor(
         }
     }
 
+    override fun logout() {
+        tokenDataHandler.removeToken()
+    }
+
 
 }

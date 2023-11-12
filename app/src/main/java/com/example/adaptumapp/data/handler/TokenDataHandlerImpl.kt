@@ -16,6 +16,10 @@ class TokenDataHandlerImpl @Inject constructor(private val context: Context) : T
             .getString(TOKEN_DATA_KEY, "") ?: ""
     )
 
+    override fun removeToken() {
+        getPrefs().edit().remove(TOKEN_DATA_KEY).apply()
+    }
+
     override fun isTokenEmpty() = getPrefs().getString(TOKEN_DATA_KEY, "")
         .isNullOrBlank()
 
