@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import java.lang.Exception
 import javax.inject.Inject
 
 class StageFragmentViewModel @Inject constructor(
@@ -18,10 +19,15 @@ class StageFragmentViewModel @Inject constructor(
     val stageDataState: StateFlow<StageDataUI?>
         get() = _stageDataState.asStateFlow()
 
-    fun init() {
+    fun init(id: Int) {
         viewModelScope.launch {
-            val stage = StageDataUI.fromModel(getStageUseCase())
-            _stageDataState.emit(stage)
+            try {
+                val stage = StageDataUI.fromModel(getStageUseCase(id))
+                _stageDataState.emit(stage)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+
         }
     }
 }

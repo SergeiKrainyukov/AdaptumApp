@@ -39,7 +39,7 @@ class StageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         bindViewModel()
-        viewModel.init()
+        arguments?.getInt(ID_PARAM)?.let { viewModel.init(it) }
     }
 
     private fun bindViewModel() {
@@ -68,6 +68,17 @@ class StageFragment : Fragment() {
             }
             videoView.settings.javaScriptEnabled = true
             videoView.loadData(videoStr, "text/html", "utf-8")
+        }
+    }
+
+    companion object {
+
+        private const val ID_PARAM = "ID_PARAM"
+
+        fun getInstance(id: Int) = StageFragment().apply {
+            arguments = Bundle().apply {
+                putInt(ID_PARAM, id)
+            }
         }
     }
 }

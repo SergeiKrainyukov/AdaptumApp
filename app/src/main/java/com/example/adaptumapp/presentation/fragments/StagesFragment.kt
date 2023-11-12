@@ -57,8 +57,8 @@ class StagesFragment : Fragment() {
         with(binding.tasksRv) {
             adapter = tasksListAdapter
         }
-        tasksListAdapter.onClickTask = {
-            Navigator.navigateReplaceSaveStack(StageFragment(), parentFragmentManager)
+        tasksListAdapter.onClickStage = {
+            Navigator.navigateReplaceSaveStack(StageFragment.getInstance(it), parentFragmentManager)
         }
     }
 
