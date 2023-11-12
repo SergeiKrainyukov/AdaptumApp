@@ -8,7 +8,7 @@ import com.example.adaptumapp.presentation.diffUtils.TaskItemDiffCallback
 import com.example.adaptumapp.presentation.model.StageListItem
 import com.example.adaptumapp.presentation.viewHolders.TaskViewHolder
 
-class TasksListAdapter : ListAdapter<StageListItem, TaskViewHolder>(TaskItemDiffCallback()) {
+class StagesListAdapter : ListAdapter<StageListItem, TaskViewHolder>(TaskItemDiffCallback()) {
 
     var onClickStage: ((StageListItem) -> Unit)? = null
 

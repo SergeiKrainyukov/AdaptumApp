@@ -11,7 +11,7 @@ import com.example.adaptumapp.presentation.viewHolders.AdaptPlanViewHolder
 class AdaptPlansListAdapter : ListAdapter<AdaptPlanListItem, AdaptPlanViewHolder>(AdaptPlanItemDiffCallback())  {
 
     var onClickAction: ((Int) -> Unit)? = null
-    var onClickSendMessageAction: (() -> Unit)? = null
+    var onClickSendMessageAction: ((String) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdaptPlanViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_adapt_plan, parent, false)

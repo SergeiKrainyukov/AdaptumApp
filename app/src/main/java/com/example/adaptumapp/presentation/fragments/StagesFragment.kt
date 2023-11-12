@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.adaptumapp.AdaptumApp
 import com.example.adaptumapp.databinding.FragmentStagesBinding
-import com.example.adaptumapp.presentation.adapters.TasksListAdapter
+import com.example.adaptumapp.presentation.adapters.StagesListAdapter
 import com.example.adaptumapp.presentation.common.Navigator
 import com.example.adaptumapp.presentation.common.collectFlow
 import com.example.adaptumapp.presentation.viewModels.StagesFragmentViewModel
@@ -16,7 +16,7 @@ import javax.inject.Inject
 class StagesFragment : Fragment() {
 
     private lateinit var binding: FragmentStagesBinding
-    private lateinit var tasksListAdapter: TasksListAdapter
+    private lateinit var stagesListAdapter: StagesListAdapter
 
     @Inject
     lateinit var viewModel: StagesFragmentViewModel
@@ -44,7 +44,7 @@ class StagesFragment : Fragment() {
 
     private fun bindViewModel() {
         collectFlow(viewModel.stagesState) {
-            tasksListAdapter.submitList(it)
+            stagesListAdapter.submitList(it)
         }
     }
 
@@ -53,11 +53,11 @@ class StagesFragment : Fragment() {
     }
 
     private fun initRecyclerView() {
-        tasksListAdapter = TasksListAdapter()
+        stagesListAdapter = StagesListAdapter()
         with(binding.tasksRv) {
-            adapter = tasksListAdapter
+            adapter = stagesListAdapter
         }
-        tasksListAdapter.onClickStage = {
+        stagesListAdapter.onClickStage = {
             Navigator.navigateReplaceSaveStack(StageFragment.getInstance(it), parentFragmentManager)
         }
     }

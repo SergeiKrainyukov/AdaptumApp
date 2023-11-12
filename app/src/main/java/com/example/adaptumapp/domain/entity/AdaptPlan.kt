@@ -9,5 +9,6 @@ data class AdaptPlan(
     val countMaterials: Int,
     val durationDays: Int,
     val avatarUrl: String,
-    val startDate: String
+    val startDate: String,
+    val mentorName: String
 )

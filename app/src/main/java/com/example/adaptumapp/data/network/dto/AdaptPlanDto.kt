@@ -19,7 +19,8 @@ data class AdaptPlanDto(
         countMaterials = statPlan.countMaterials,
         durationDays = statPlan.durationDays,
         avatarUrl = mentorInfoDto.avatarUrl,
-        startDate = groupInfoDto.startDate
+        startDate = groupInfoDto.startDate,
+        mentorName = mentorInfoDto.firstName
     )
 }
 

@@ -11,6 +11,7 @@ data class AdaptPlanListItem(
     val countMaterials: String,
     val durationDays: String,
     val avatarUrl: String,
+    val mentorName: String,
     val startDate: String
 ) {
     companion object {
@@ -23,6 +24,7 @@ data class AdaptPlanListItem(
             countMaterials = adaptPlan.countMaterials.toString(),
             durationDays = adaptPlan.durationDays.toString(),
             avatarUrl = adaptPlan.avatarUrl,
+            mentorName = adaptPlan.mentorName,
             startDate = adaptPlan.startDate
         )
     }
