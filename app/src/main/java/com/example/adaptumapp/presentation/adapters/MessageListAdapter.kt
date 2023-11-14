@@ -1,61 +1,17 @@
-package com.example.adaptumapp.presentation.fragments
+package com.example.adaptumapp.presentation.adapters
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.adaptumapp.R
-import com.example.adaptumapp.databinding.FragmentHelpBinding
-
-class HelpFragment : Fragment() {
-
-    private lateinit var binding: FragmentHelpBinding
-    private lateinit var messageListAdapter: MessageListAdapter
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentHelpBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.mentorNameTv.text = arguments?.getString(NAME_ARG)
-
-        messageListAdapter = MessageListAdapter()
-        messageListAdapter.messageList = listOf(
-            Message("Привет, нужна помощь по первой стадии плана", true),
-            Message("Привет, освобожусь в 12:00, тогда пообщаемся", false),
-            Message("Хорошо, договорились", true),
-        )
-        binding.chatRecyclerView.adapter = messageListAdapter
-    }
-
-    companion object {
-
-        private const val NAME_ARG = "NAME_ARG"
-
-        fun getInstance(name: String) = HelpFragment().apply {
-            arguments = Bundle().apply {
-                putString(NAME_ARG, name)
-            }
-        }
-
-
-    }
-}
+import com.example.adaptumapp.presentation.model.MessageListItem
 
 class MessageListAdapter : RecyclerView.Adapter<MessageListAdapter.MessageItemViewHolder>() {
 
-    var messageList = listOf<Message>()
+    var messageListItemList = listOf<MessageListItem>()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -72,7 +28,7 @@ class MessageListAdapter : RecyclerView.Adapter<MessageListAdapter.MessageItemVi
     }
 
     override fun onBindViewHolder(viewHolder: MessageItemViewHolder, position: Int) {
-        val message = messageList[position]
+        val message = messageListItemList[position]
         viewHolder.view.setOnLongClickListener {
             true
         }
@@ -91,11 +47,11 @@ class MessageListAdapter : RecyclerView.Adapter<MessageListAdapter.MessageItemVi
     }
 
     override fun getItemCount(): Int {
-        return messageList.size
+        return messageListItemList.size
     }
 
     override fun getItemViewType(position: Int): Int {
-        val item = messageList[position]
+        val item = messageListItemList[position]
         return if (item.isSent) {
             VIEW_TYPE_SENT
         } else {
@@ -110,7 +66,6 @@ class MessageListAdapter : RecyclerView.Adapter<MessageListAdapter.MessageItemVi
     companion object {
         const val VIEW_TYPE_RECEIVED = 100
         const val VIEW_TYPE_SENT = 101
+        const val MENTOR_ID = "MENTOR_ID"
     }
 }
-
-data class Message(var message: String, val isSent: Boolean)

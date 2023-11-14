@@ -52,7 +52,7 @@ class AdaptPlansFragment : Fragment() {
             )
         }
         adaptPlansListAdapter.onClickSendMessageAction = {
-            Navigator.navigateReplaceSaveStack(HelpFragment.getInstance(it), parentFragmentManager)
+            Navigator.navigateReplaceSaveStack(ChatFragment.getInstance(it), parentFragmentManager)
         }
     }
 
