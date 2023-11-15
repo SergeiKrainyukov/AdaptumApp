@@ -8,7 +8,7 @@ import javax.inject.Inject
 class MessagesRepositoryImpl @Inject constructor(
     private val messagesApi: MessagesApi
 ) : MessagesRepository {
-    override suspend fun getMessages(): List<Message> {
-        return messagesApi.getMessages().map { it.toModel() }
+    override suspend fun getMessages(contactId: Int): List<Message> {
+        return messagesApi.getMessages(contactId).map { it.toModel() }
     }
 }

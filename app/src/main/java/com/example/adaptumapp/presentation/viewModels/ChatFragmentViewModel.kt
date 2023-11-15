@@ -17,9 +17,9 @@ class ChatFragmentViewModel @Inject constructor(
     val messagesState: StateFlow<List<MessageListItem>>
         get() = _messagesState
 
-    fun init() {
+    fun init(contactId: Int) {
         viewModelScope.launch {
-            val messages = getMessagesUseCase.invoke()
+            val messages = getMessagesUseCase.invoke(contactId)
             _messagesState.value = messages.map { MessageListItem.fromModel(it) }
         }
     }

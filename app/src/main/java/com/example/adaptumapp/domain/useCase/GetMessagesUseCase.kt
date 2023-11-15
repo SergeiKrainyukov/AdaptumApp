@@ -7,7 +7,7 @@ import javax.inject.Inject
 class GetMessagesUseCase @Inject constructor(
     private val messagesRepository: MessagesRepository
 ) {
-    suspend operator fun invoke(): List<Message> {
-        return messagesRepository.getMessages()
+    suspend operator fun invoke(contactId: Int): List<Message> {
+        return messagesRepository.getMessages(contactId)
     }
 }
