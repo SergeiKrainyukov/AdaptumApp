@@ -62,6 +62,7 @@ class ChatFragment : Fragment() {
             binding.chatRecyclerView.adapter = messageListAdapter
             binding.sendButton.setOnClickListener {
                 val text = binding.inputEditText.text.toString()
+                Log.d("text", text)
                 if (text.isBlank()) return@setOnClickListener
                 viewModel.onClickSendMessage(text, mentor.id)
             }
@@ -72,7 +73,6 @@ class ChatFragment : Fragment() {
         collectFlow(viewModel.messagesState) {
             messageListAdapter.messageListItemList = it
             binding.inputEditText.text.clear()
-            Log.d("Chat", "text cleared")
         }
     }
 

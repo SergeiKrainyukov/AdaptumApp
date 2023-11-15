@@ -1,6 +1,7 @@
 package com.example.adaptumapp.data.network.api
 
 import com.example.adaptumapp.data.network.dto.MessageDto
+import okhttp3.RequestBody
 import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.POST
@@ -14,7 +15,7 @@ interface MessagesApi {
     @Multipart
     @POST("/api/chat/")
     suspend fun sendMessage(
-        @Part("message") message: String,
+        @Part("message") message: RequestBody,
         @Part("sender") sender: Int,
         @Part("recipient") recipient: Int,
     )

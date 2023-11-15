@@ -42,7 +42,6 @@ class ChatFragmentViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val userId = getProfileDataUseCase.invoke().id
-                Log.d("onClickSendMessage","userId: $userId, contactId: $contactId")
                 val message = MessageBody(userId, contactId, messageText)
                 sendMessageUseCase(message)
                 getMessages(contactId)
