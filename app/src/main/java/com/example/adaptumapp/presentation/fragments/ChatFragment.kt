@@ -5,16 +5,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.adaptumapp.AdaptumApp
 import com.example.adaptumapp.databinding.FragmentChatBinding
 import com.example.adaptumapp.domain.entity.MentorInfo
 import com.example.adaptumapp.presentation.adapters.MessageListAdapter
 import com.example.adaptumapp.presentation.model.MessageListItem
+import com.example.adaptumapp.presentation.viewModels.ChatFragmentViewModel
 import com.google.gson.Gson
+import javax.inject.Inject
 
 class ChatFragment : Fragment() {
 
     private lateinit var binding: FragmentChatBinding
     private lateinit var messageListAdapter: MessageListAdapter
+
+    @Inject
+    lateinit var viewModel: ChatFragmentViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        (requireActivity().application as AdaptumApp).appComponent.inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,6 +39,8 @@ class ChatFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
+        bindViewModel()
+        viewModel.init()
     }
 
     private fun initAdapter() {
@@ -43,6 +56,10 @@ class ChatFragment : Fragment() {
             )
             binding.chatRecyclerView.adapter = messageListAdapter
         }
+    }
+
+    private fun bindViewModel() {
+
     }
 
     companion object {
