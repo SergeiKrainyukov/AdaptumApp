@@ -18,8 +18,8 @@
             android:id="@+id/start_date_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/test_text_secondary"
             android:text="Дата начала: "
+            android:textColor="@color/test_text_secondary"
             app:layout_constraintBottom_toTopOf="@id/plan_name_tv"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -50,22 +50,22 @@
             android:id="@+id/avatar"
             android:layout_width="80dp"
             android:layout_height="80dp"
+            android:importantForAccessibility="no"
             android:src="@drawable/ic_user"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:importantForAccessibility="no" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/send_message_btn"
             android:layout_width="0dp"
             android:layout_height="36dp"
+            android:backgroundTint="@color/test_toolbar"
+            android:importantForAccessibility="no"
             android:src="@drawable/ic_mail"
             app:layout_constraintEnd_toEndOf="@+id/avatar"
             app:layout_constraintStart_toStartOf="@+id/avatar"
             app:layout_constraintTop_toBottomOf="@+id/avatar"
-            app:tint="@color/white"
-            android:backgroundTint="@color/test_toolbar"
-            android:importantForAccessibility="no" />
+            app:tint="@color/white" />
 
         <TextView
             android:id="@+id/group_name_tv"
@@ -117,6 +117,7 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             android:drawableLeft="@drawable/ic_book"
             android:drawablePadding="3dp"
             android:gravity="center"
@@ -125,6 +126,7 @@
             app:drawableTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/countMentors"
+            app:layout_constraintTop_toBottomOf="@+id/group_name_tv"
             app:tint="@color/white" />
 
         <TextView
@@ -132,6 +134,7 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             android:drawableLeft="@drawable/ic_time"
             android:drawablePadding="3dp"
             android:gravity="center"
@@ -140,6 +143,7 @@
             app:drawableTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/count_materials"
+            app:layout_constraintTop_toBottomOf="@+id/group_name_tv"
             app:tint="@color/white" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -56,7 +56,7 @@ class AdaptPlansFragment : Fragment() {
         }
     }
 
-    fun bindViewModel() {
+    private fun bindViewModel() {
         collectFlow(viewModel.adaptListState) {
             adaptPlansListAdapter.submitList(it)
         }
