@@ -7,12 +7,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.adaptumapp.R
+import com.example.adaptumapp.domain.entity.MentorInfo
 import com.example.adaptumapp.presentation.model.AdaptPlanListItem
 
 class AdaptPlanViewHolder(
     private val view: View,
     private val onClickAction: ((Int) -> Unit)?,
-    private val onClickSendMessageAction: ((Int) -> Unit)?
+    private val onClickSendMessageAction: ((MentorInfo) -> Unit)?
 ) :
     RecyclerView.ViewHolder(view) {
     fun bind(adaptPlanListItem: AdaptPlanListItem) {
@@ -29,9 +30,9 @@ class AdaptPlanViewHolder(
                 adaptPlanListItem.durationDays
             val imageView = view.findViewById(R.id.avatar) as ImageView
             findViewById<ImageButton>(R.id.send_message_btn).setOnClickListener {
-                onClickSendMessageAction?.invoke(adaptPlanListItem.mentorId)
+                onClickSendMessageAction?.invoke(adaptPlanListItem.mentor)
             }
-            Glide.with(this).load(adaptPlanListItem.avatarUrl).into(imageView)
+            Glide.with(this).load(adaptPlanListItem.mentor.avatarUrl).into(imageView)
         }
         itemView.setOnClickListener {
             onClickAction?.invoke(adaptPlanListItem.id)

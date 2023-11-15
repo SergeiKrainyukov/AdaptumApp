@@ -1,6 +1,7 @@
 package com.example.adaptumapp.data.network.dto
 
 import com.example.adaptumapp.domain.entity.AdaptPlan
+import com.example.adaptumapp.domain.entity.MentorInfo
 import com.google.gson.annotations.SerializedName
 
 data class AdaptPlanDto(
@@ -9,26 +10,28 @@ data class AdaptPlanDto(
     @SerializedName("group_info") val groupInfoDto: GroupInfoDto,
     @SerializedName("adapt_info") val adaptInfoDto: AdaptInfoDto,
     @SerializedName("statPlan") val statPlan: StatPlan,
-){
+) {
     fun toModel() = AdaptPlan(
         id = id,
+        mentor = mentorInfoDto.toModel(),
         groupName = groupInfoDto.title,
         adaptPlanName = adaptInfoDto.title,
         countStages = statPlan.countStages,
         countMentors = statPlan.countMentors,
         countMaterials = statPlan.countMaterials,
         durationDays = statPlan.durationDays,
-        avatarUrl = mentorInfoDto.avatarUrl,
         startDate = groupInfoDto.startDate,
-        mentorId = mentorInfoDto.id
     )
 }
 
 data class MentorInfoDto(
     @SerializedName("id") val id: Int,
     @SerializedName("first_name") val firstName: String,
+    @SerializedName("full_name") val fullName: String,
     @SerializedName("avatar") val avatarUrl: String,
-)
+) {
+    fun toModel() = MentorInfo(id, firstName, fullName, avatarUrl)
+}
 
 data class GroupInfoDto(
     @SerializedName("id") val id: Int,

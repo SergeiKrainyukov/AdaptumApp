@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.adaptumapp.databinding.FragmentChatBinding
+import com.example.adaptumapp.domain.entity.MentorInfo
 import com.example.adaptumapp.presentation.adapters.MessageListAdapter
 import com.example.adaptumapp.presentation.model.MessageListItem
+import com.google.gson.Gson
 
 class ChatFragment : Fragment() {
 
@@ -29,24 +31,27 @@ class ChatFragment : Fragment() {
     }
 
     private fun initAdapter() {
-        binding.mentorNameTv.text = arguments?.getInt(MENTOR_ID_ARG).toString()
+        arguments?.let {
+            val mentor = Gson().fromJson(it.getString(MENTOR_INFO_ARG), MentorInfo::class.java)
+            binding.mentorNameTv.text = mentor.fullName
 
-        messageListAdapter = MessageListAdapter()
-        messageListAdapter.messageListItemList = listOf(
-            MessageListItem("Привет, нужна помощь по первой стадии плана", true),
-            MessageListItem("Привет, освобожусь в 12:00, тогда пообщаемся", false),
-            MessageListItem("Хорошо, договорились", true),
-        )
-        binding.chatRecyclerView.adapter = messageListAdapter
+            messageListAdapter = MessageListAdapter()
+            messageListAdapter.messageListItemList = listOf(
+                MessageListItem("Привет, нужна помощь по первой стадии плана", true),
+                MessageListItem("Привет, освобожусь в 12:00, тогда пообщаемся", false),
+                MessageListItem("Хорошо, договорились", true),
+            )
+            binding.chatRecyclerView.adapter = messageListAdapter
+        }
     }
 
     companion object {
 
-        private const val MENTOR_ID_ARG = "MENTOR_ID_ARG"
+        private const val MENTOR_INFO_ARG = "MENTOR_INFO"
 
-        fun getInstance(mentorId: Int) = ChatFragment().apply {
+        fun getInstance(mentorInfo: MentorInfo) = ChatFragment().apply {
             arguments = Bundle().apply {
-                putInt(MENTOR_ID_ARG, mentorId)
+                putString(MENTOR_INFO_ARG, Gson().toJson(mentorInfo))
             }
         }
 
