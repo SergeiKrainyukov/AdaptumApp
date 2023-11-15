@@ -9,6 +9,7 @@ import com.example.adaptumapp.AdaptumApp
 import com.example.adaptumapp.databinding.FragmentChatBinding
 import com.example.adaptumapp.domain.entity.MentorInfo
 import com.example.adaptumapp.presentation.adapters.MessageListAdapter
+import com.example.adaptumapp.presentation.common.collectFlow
 import com.example.adaptumapp.presentation.model.MessageListItem
 import com.example.adaptumapp.presentation.viewModels.ChatFragmentViewModel
 import com.google.gson.Gson
@@ -38,28 +39,25 @@ class ChatFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initAdapter()
+        initViews()
         bindViewModel()
         viewModel.init()
     }
 
-    private fun initAdapter() {
+    private fun initViews() {
         arguments?.let {
             val mentor = Gson().fromJson(it.getString(MENTOR_INFO_ARG), MentorInfo::class.java)
             binding.mentorNameTv.text = mentor.fullName
-
-            messageListAdapter = MessageListAdapter()
-            messageListAdapter.messageListItemList = listOf(
-                MessageListItem("Привет, нужна помощь по первой стадии плана", true),
-                MessageListItem("Привет, освобожусь в 12:00, тогда пообщаемся", false),
-                MessageListItem("Хорошо, договорились", true),
-            )
-            binding.chatRecyclerView.adapter = messageListAdapter
         }
+        messageListAdapter = MessageListAdapter()
+        binding.chatRecyclerView.adapter = messageListAdapter
     }
 
     private fun bindViewModel() {
-
+        collectFlow(viewModel.messagesState){
+            messageListAdapter.messageListItemList = it
+            messageListAdapter.notifyDataSetChanged()
+        }
     }
 
     companion object {
