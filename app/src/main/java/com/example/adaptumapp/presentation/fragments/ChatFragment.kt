@@ -29,7 +29,7 @@ class ChatFragment : Fragment() {
     }
 
     private fun initAdapter() {
-        binding.mentorNameTv.text = arguments?.getString(NAME_ARG)
+        binding.mentorNameTv.text = arguments?.getInt(MENTOR_ID_ARG).toString()
 
         messageListAdapter = MessageListAdapter()
         messageListAdapter.messageListItemList = listOf(
@@ -42,14 +42,13 @@ class ChatFragment : Fragment() {
 
     companion object {
 
-        private const val NAME_ARG = "NAME_ARG"
+        private const val MENTOR_ID_ARG = "MENTOR_ID_ARG"
 
-        fun getInstance(name: String) = ChatFragment().apply {
+        fun getInstance(mentorId: Int) = ChatFragment().apply {
             arguments = Bundle().apply {
-                putString(NAME_ARG, name)
+                putInt(MENTOR_ID_ARG, mentorId)
             }
         }
-
 
     }
 }

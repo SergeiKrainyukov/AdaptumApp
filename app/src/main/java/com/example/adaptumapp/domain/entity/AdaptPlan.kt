@@ -2,6 +2,7 @@ package com.example.adaptumapp.domain.entity
 
 data class AdaptPlan(
     val id: Int,
+    val mentorId: Int,
     val groupName: String,
     val adaptPlanName: String,
     val countStages: Int,
@@ -10,5 +11,4 @@ data class AdaptPlan(
     val durationDays: Int,
     val avatarUrl: String,
     val startDate: String,
-    val mentorName: String
 )

@@ -9,9 +9,13 @@ import com.bumptech.glide.Glide
 import com.example.adaptumapp.R
 import com.example.adaptumapp.presentation.model.AdaptPlanListItem
 
-class AdaptPlanViewHolder(private val view: View, private val onClickAction: ((Int) -> Unit)?) :
+class AdaptPlanViewHolder(
+    private val view: View,
+    private val onClickAction: ((Int) -> Unit)?,
+    private val onClickSendMessageAction: ((Int) -> Unit)?
+) :
     RecyclerView.ViewHolder(view) {
-    fun bind(adaptPlanListItem: AdaptPlanListItem, onClickSendMessageAction: ((String) -> Unit)?) {
+    fun bind(adaptPlanListItem: AdaptPlanListItem) {
         with(view) {
             findViewById<TextView>(R.id.plan_name_tv).text = adaptPlanListItem.adaptPlanName
             findViewById<TextView>(R.id.group_name_tv).text = adaptPlanListItem.groupName
@@ -25,7 +29,7 @@ class AdaptPlanViewHolder(private val view: View, private val onClickAction: ((I
                 adaptPlanListItem.durationDays
             val imageView = view.findViewById(R.id.avatar) as ImageView
             findViewById<ImageButton>(R.id.send_message_btn).setOnClickListener {
-                onClickSendMessageAction?.invoke(adaptPlanListItem.mentorName)
+                onClickSendMessageAction?.invoke(adaptPlanListItem.mentorId)
             }
             Glide.with(this).load(adaptPlanListItem.avatarUrl).into(imageView)
         }

@@ -4,6 +4,7 @@ import com.example.adaptumapp.domain.entity.AdaptPlan
 
 data class AdaptPlanListItem(
     val id: Int,
+    val mentorId: Int,
     val groupName: String,
     val adaptPlanName: String,
     val countStages: String,
@@ -11,7 +12,6 @@ data class AdaptPlanListItem(
     val countMaterials: String,
     val durationDays: String,
     val avatarUrl: String,
-    val mentorName: String,
     val startDate: String
 ) {
     companion object {
@@ -24,7 +24,7 @@ data class AdaptPlanListItem(
             countMaterials = adaptPlan.countMaterials.toString(),
             durationDays = adaptPlan.durationDays.toString(),
             avatarUrl = adaptPlan.avatarUrl,
-            mentorName = adaptPlan.mentorName,
+            mentorId = adaptPlan.mentorId,
             startDate = adaptPlan.startDate
         )
     }

@@ -11,14 +11,14 @@ import com.example.adaptumapp.presentation.viewHolders.AdaptPlanViewHolder
 class AdaptPlansListAdapter : ListAdapter<AdaptPlanListItem, AdaptPlanViewHolder>(AdaptPlanItemDiffCallback())  {
 
     var onClickAction: ((Int) -> Unit)? = null
-    var onClickSendMessageAction: ((String) -> Unit)? = null
+    var onClickSendMessageAction: ((Int) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdaptPlanViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_adapt_plan, parent, false)
-        return AdaptPlanViewHolder(view, onClickAction)
+        return AdaptPlanViewHolder(view, onClickAction, onClickSendMessageAction)
     }
 
     override fun onBindViewHolder(holder: AdaptPlanViewHolder, position: Int) {
-        holder.bind(currentList[position], onClickSendMessageAction)
+        holder.bind(currentList[position])
     }
 }
