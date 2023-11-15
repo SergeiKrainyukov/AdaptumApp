@@ -1,6 +1,7 @@
 package com.example.adaptumapp.presentation.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,6 +27,7 @@ class ChatFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         (requireActivity().application as AdaptumApp).appComponent.inject(this)
+        parseArgs()
     }
 
     override fun onCreateView(
@@ -41,22 +43,36 @@ class ChatFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initViews()
         bindViewModel()
-        mentor?.let { viewModel.init(it.id) }
+        mentor?.let { viewModel.getMessages(it.id) }
+    }
+
+    private fun parseArgs() {
+        mentor = arguments?.let {
+            Gson().fromJson(
+                it.getString(MENTOR_INFO_ARG),
+                MentorInfo::class.java
+            )
+        }
     }
 
     private fun initViews() {
-        arguments?.let {
-            mentor = Gson().fromJson(it.getString(MENTOR_INFO_ARG), MentorInfo::class.java)
-            binding.mentorNameTv.text = mentor?.fullName
+        mentor?.let { mentor ->
+            binding.mentorNameTv.text = mentor.fullName
+            messageListAdapter = MessageListAdapter()
+            binding.chatRecyclerView.adapter = messageListAdapter
+            binding.sendButton.setOnClickListener {
+                val text = binding.inputEditText.text.toString()
+                if (text.isBlank()) return@setOnClickListener
+                viewModel.onClickSendMessage(text, mentor.id)
+            }
         }
-        messageListAdapter = MessageListAdapter()
-        binding.chatRecyclerView.adapter = messageListAdapter
     }
 
     private fun bindViewModel() {
         collectFlow(viewModel.messagesState) {
             messageListAdapter.messageListItemList = it
-            messageListAdapter.notifyDataSetChanged()
+            binding.inputEditText.text.clear()
+            Log.d("Chat", "text cleared")
         }
     }
 
