@@ -9,9 +9,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import java.lang.Exception
 import javax.inject.Inject
-import kotlin.math.log
 
 class ProfileFragmentViewModel @Inject constructor(
     private val getProfileDataUseCase: GetProfileDataUseCase,
@@ -30,7 +28,6 @@ class ProfileFragmentViewModel @Inject constructor(
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-
         }
     }
 

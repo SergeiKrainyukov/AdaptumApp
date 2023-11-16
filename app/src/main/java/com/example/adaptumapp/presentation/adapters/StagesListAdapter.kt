@@ -13,7 +13,7 @@ class StagesListAdapter : ListAdapter<StageListItem, StageViewHolder>(TaskItemDi
     var onClickStage: ((StageListItem) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StageViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_task, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_stage, parent, false)
         return StageViewHolder(view)
     }
 

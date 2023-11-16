@@ -7,9 +7,10 @@ import com.example.adaptumapp.R
 import com.example.adaptumapp.presentation.model.StageListItem
 
 class StageViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-    fun bind(training: StageListItem) {
-        view.findViewById<TextView>(R.id.task_name_tv).text = training.name
-        view.findViewById<TextView>(R.id.description_tv).text = training.description
-        view.findViewById<TextView>(R.id.created_date_tv).text = training.date
+    fun bind(stage: StageListItem) {
+        view.findViewById<TextView>(R.id.task_name_tv).text = stage.name
+        view.findViewById<TextView>(R.id.description_tv).text = stage.description
+        view.findViewById<TextView>(R.id.created_date_tv).text = stage.date
+        view.findViewById<TextView>(R.id.status_tv).text = stage.status
     }
 }

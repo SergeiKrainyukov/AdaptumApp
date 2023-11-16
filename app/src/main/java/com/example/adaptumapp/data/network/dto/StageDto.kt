@@ -12,14 +12,18 @@ data class StageDto(
     @SerializedName("updated_at") val date: String,
     @SerializedName("file") val documentUrl: String?,
     @SerializedName("link_video") val videoUrl: String?,
+    @SerializedName("user_data_on_stage_keys") val userDataOnStageKeys: UserDataOnStageKeysDto,
+    @SerializedName("user_data_on_stage") val userDataOnStage: UserDataOnStageDto,
 ) {
     fun toModel() = Stage(
         id = id,
         name = title,
+        status = userDataOnStage.status,
         description = description,
         date = parseDate(date),
         documentUrl = documentUrl ?: "",
-        videoUrl = videoUrl ?: ""
+        videoUrl = videoUrl ?: "",
+        userDataOnStageKeys = userDataOnStageKeys.toModel(),
     )
 
     private fun parseDate(dateDto: String): String {

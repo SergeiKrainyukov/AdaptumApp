@@ -67,6 +67,7 @@ class StageFragment : Fragment() {
                 Navigator.navigateReplaceSaveStack(TrackerFragment(), parentFragmentManager)
             }
             acceptTaskBtn.setOnClickListener {
+                viewModel.onClickAccept(1)
                 Navigator.closeFragment(parentFragmentManager)
             }
             if (stageListItem.videoUrl.isEmpty()) {
