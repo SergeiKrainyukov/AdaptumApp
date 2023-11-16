@@ -19,6 +19,7 @@
             style="@style/TitleTextStyleWhite"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
             android:maxLines="2"
             android:text="Познакомиться с коллегами"
             app:layout_constraintEnd_toStartOf="@+id/created_date_tv"
