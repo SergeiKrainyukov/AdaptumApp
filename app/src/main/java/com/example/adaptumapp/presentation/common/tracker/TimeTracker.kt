@@ -8,5 +8,6 @@ interface TimeTracker {
     fun pause()
     fun resume()
     fun listen(): StateFlow<Long>
+    fun getActualValue(): Long
     fun isRunning(): Boolean
 }

@@ -8,6 +8,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResultListener
 import com.example.adaptumapp.AdaptumApp
 import com.example.adaptumapp.databinding.FragmentStageBinding
 import com.example.adaptumapp.presentation.common.Navigator
@@ -48,6 +49,9 @@ class StageFragment : Fragment() {
                     StageListItem::class.java
                 ) as StageListItem
             )
+        }
+        setFragmentResultListener(TrackerFragment.FRAGMENT_RESULT_KEY) { _, bundle ->
+            binding.timeTrackingValue.text = bundle.getString(TrackerFragment.TIME_TRACKING_KEY)
         }
     }
 

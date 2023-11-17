@@ -5,20 +5,23 @@ import androidx.lifecycle.viewModelScope
 import com.example.adaptumapp.presentation.common.tracker.TimeTracker
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Locale
 import javax.inject.Inject
+import kotlin.math.roundToInt
 
-class TaskFragmentViewModel @Inject constructor(
+class TrackerFragmentViewModel @Inject constructor(
     private val timeTracker: TimeTracker,
 ) : ViewModel() {
 
     private val _timeCountState = MutableStateFlow<Long>(0)
     val timeCountState: StateFlow<Long>
         get() = _timeCountState
+
+    private val _closeScreenCommand = MutableStateFlow<String?>(null)
+    val closeScreenCommand: StateFlow<String?>
+        get() = _closeScreenCommand.asStateFlow()
 
     private var _isStarted: Boolean = false
     val isStarted: Boolean
@@ -34,7 +37,12 @@ class TaskFragmentViewModel @Inject constructor(
     }
 
     fun onClickStop() {
-
+        viewModelScope.launch {
+            _closeScreenCommand.emit(
+                (((timeTracker.getActualValue() / 3600.0) * 1000).roundToInt() / 1000.0).toString()
+                    .plus("ч.")
+            )
+        }
     }
 
     fun onClickPauseResume() {
@@ -45,11 +53,5 @@ class TaskFragmentViewModel @Inject constructor(
             timeTracker.resume()
             true
         }
-    }
-
-    private fun getCurrentDate(): String {
-        val currentDateTime: Calendar = Calendar.getInstance()
-        val formatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
-        return formatter.format(currentDateTime.time)
     }
 }

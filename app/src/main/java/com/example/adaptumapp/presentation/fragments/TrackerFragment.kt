@@ -4,24 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.flowWithLifecycle
-import androidx.lifecycle.lifecycleScope
+import androidx.fragment.app.setFragmentResult
 import com.example.adaptumapp.AdaptumApp
 import com.example.adaptumapp.R
 import com.example.adaptumapp.databinding.FragmentTrackerBinding
-import com.example.adaptumapp.presentation.viewModels.TaskFragmentViewModel
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.filterNotNull
-import kotlinx.coroutines.launch
+import com.example.adaptumapp.presentation.common.Navigator
+import com.example.adaptumapp.presentation.common.collectFlow
+import com.example.adaptumapp.presentation.viewModels.TrackerFragmentViewModel
 import javax.inject.Inject
 
 class TrackerFragment : Fragment() {
     private lateinit var binding: FragmentTrackerBinding
 
     @Inject
-    lateinit var viewModel: TaskFragmentViewModel
+    lateinit var viewModel: TrackerFragmentViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,6 +47,7 @@ class TrackerFragment : Fragment() {
         binding.pauseButton.apply {
             setOnClickListener {
                 viewModel.onClickPauseResume()
+                binding.stopButton.visibility = View.VISIBLE
                 setImageResource(if (viewModel.isStarted) R.drawable.ic_pause else R.drawable.ic_play)
             }
         }
@@ -65,15 +64,23 @@ class TrackerFragment : Fragment() {
 
     private fun bindViewModel() {
         with(viewModel) {
-            lifecycleScope.launch {
-                viewModel.timeCountState.flowWithLifecycle(
-                    lifecycle,
-                    Lifecycle.State.RESUMED
-                ).filterNotNull()
-                    .collectLatest {
-                        binding.currentMetricValue.text = it.toString()
-                    }
+            collectFlow(timeCountState) {
+                binding.currentMetricValue.text = it.toString()
+            }
+            collectFlow(closeScreenCommand) {
+                if (!it.isNullOrBlank()) {
+                    setFragmentResult(
+                        FRAGMENT_RESULT_KEY,
+                        bundleOf(TIME_TRACKING_KEY to it)
+                    )
+                    Navigator.closeFragment(parentFragmentManager)
+                }
             }
         }
+    }
+
+    companion object {
+        const val FRAGMENT_RESULT_KEY = "TrackerFragmentResult"
+        const val TIME_TRACKING_KEY = "TIME_TRACKING_KEY"
     }
 }

@@ -90,6 +90,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/videoView" />
 
+        <TextView
+            android:id="@+id/time_tracking_value"
+            style="@style/NormalTextStyleWhite"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="0ч"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/time_tracking_title" />
+
         <Button
             android:id="@+id/start_timer_btn"
             android:layout_width="wrap_content"
@@ -101,7 +112,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/time_tracking_title" />
+            app:layout_constraintTop_toBottomOf="@+id/time_tracking_title"
+            />
 
         <Button
             android:id="@+id/accept_task_btn"

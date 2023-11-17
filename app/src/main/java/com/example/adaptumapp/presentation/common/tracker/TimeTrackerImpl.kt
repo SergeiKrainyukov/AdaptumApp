@@ -42,6 +42,10 @@ class TimeTrackerImpl @Inject constructor() : TimeTracker, CountDownTimer(Long.M
 
     override fun listen(): StateFlow<Long> = timeState
 
+    override fun getActualValue(): Long {
+        return timeState.value
+    }
+
     override fun isRunning() = isRunning
 
 
