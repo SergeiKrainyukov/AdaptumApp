@@ -3,6 +3,7 @@ package com.example.adaptumapp.presentation.viewHolders
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.adaptumapp.R
@@ -23,6 +24,7 @@ class EventViewHolder(private val view: View, private val registerAction: ((Int)
                 isEnabled = if (eventItem.status == "Планируется") {
                     setOnClickListener {
                         registerAction?.invoke(eventItem.id)
+                        isVisible = false
                     }
                     setBackgroundColor(view.context.resources.getColor(R.color.theme_green))
                     true
