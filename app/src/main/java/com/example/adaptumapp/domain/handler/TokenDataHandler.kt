@@ -8,5 +8,4 @@ interface TokenDataHandler {
     fun removeToken()
     fun isTokenEmpty(): Boolean
     fun isTokenNotEmpty(): Boolean
-
 }
